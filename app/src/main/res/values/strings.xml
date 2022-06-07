@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bench Project</string>
+    <string name="page_1">Page 1</string>
+    <string name="page_2">Page 2</string>
 </resources>
