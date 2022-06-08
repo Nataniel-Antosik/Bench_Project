@@ -2,4 +2,6 @@
     <string name="app_name">Bench Project</string>
     <string name="page_1">Page 1</string>
     <string name="page_2">Page 2</string>
+    <string name="hello_blank_fragment_1">Hello blank fragment 1</string>
+    <string name="hello_blank_fragment_2">Hello blank fragment 2</string>
 </resources>
