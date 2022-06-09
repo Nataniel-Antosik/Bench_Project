@@ -1,26 +1,26 @@
 package com.example.benchproject.app.main.view
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.benchproject.R
-import com.example.benchproject.app.main.viewModel.MainViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO This is temporary before view binding it's only for show data on the device screen
-        val mainTextView: TextView = findViewById(R.id.mainTextView)
-        mainTextView.text = mainViewModel.getMovieData().toString()
+        // TODO change it after data binding
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.activity_main_bottom_navigation)
+        setupWithNavController(bottomNavigationView, navController)
     }
 }
