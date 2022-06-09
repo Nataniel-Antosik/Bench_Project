@@ -1,5 +1,6 @@
 package com.example.benchproject.app.main.viewModel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.benchproject.app.main.entity.Movie
 import com.example.benchproject.domain.main.usecase.GetMovieUseCase
@@ -9,7 +10,11 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val getMovieUseCase: GetMovieUseCase) : ViewModel() {
 
-    fun getMovieData() = getMovieUseCase().map {
-        Movie(it.name, it.rating)
+    val moviesList = MutableLiveData<String>()
+
+    fun getMovieData() {
+        moviesList.value = getMovieUseCase().map {
+            Movie(it.name, it.rating)
+        }.toString()
     }
 }
