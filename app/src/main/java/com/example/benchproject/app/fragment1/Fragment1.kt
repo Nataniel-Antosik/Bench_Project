@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.benchproject.R
 import com.example.benchproject.app.main.viewModel.MainViewModel
+import com.example.benchproject.databinding.Fragment1Binding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,10 +20,11 @@ class Fragment1 : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_1, container, false)
-        val mainTextView: TextView = view.findViewById(R.id.text_view_fragment1)
-        mainTextView.text = mainViewModel.getMovieData()[0].toString()
-        return view
+    ): View {
+        val binding = Fragment1Binding.inflate(inflater, container, false)
+        mainViewModel.getMovieData()
+        binding.viewModel = mainViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 }
