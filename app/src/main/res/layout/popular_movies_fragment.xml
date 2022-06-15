@@ -6,19 +6,19 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.benchproject.app.main.viewModel.MainViewModel" />
+            type="com.example.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".app.fragment1.Fragment1">
+        tools:context=".app.popular.movies.view.PopularMoviesFragment">
 
         <TextView
-            android:id="@+id/textViewFragment1"
+            android:id="@+id/textViewPopularMoviesFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.moviesList}"
+            android:text="@{viewModel.responsePopularMovie}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fragment1"
+        android:id="@+id/popularMoviesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_popular_movies"
         android:title="@string/popular_movies_fragment"/>
