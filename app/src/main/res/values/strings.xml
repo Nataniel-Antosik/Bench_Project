@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bench Project</string>
-    <string name="popular_movies_fragment">Popular Movies</string>
-    <string name="page_2">Page 2</string>
+    <string name="appName">Bench Project</string>
+    <string name="popularMoviesFragment">Popular Movies</string>
+    <string name="page2">Page 2</string>
 </resources>
