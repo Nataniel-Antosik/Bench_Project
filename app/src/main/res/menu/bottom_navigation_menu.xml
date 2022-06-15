@@ -4,11 +4,11 @@
         android:id="@+id/fragment1"
         android:enabled="true"
         android:icon="@drawable/ic_popular_movies"
-        android:title="@string/popular_movies_fragment"/>
+        android:title="@string/popularMoviesFragment"/>
     <item
         android:id="@+id/fragment2"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_filter_2_24"
-        android:title="@string/page_2"/>
+        android:title="@string/page2"/>
 
 </menu>
