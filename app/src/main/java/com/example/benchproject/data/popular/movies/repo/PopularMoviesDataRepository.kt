@@ -12,7 +12,13 @@ class PopularMoviesDataRepository @Inject constructor(
     override suspend fun getPopularMoviesList(): Result<List<MovieModel>> =
         runCatching {
             apiService.getPopularMovies().results.map { movieRemote ->
-                MovieModel(movieRemote.name, movieRemote.rating)
+                MovieModel(
+                    movieRemote.id,
+                    movieRemote.name,
+                    movieRemote.rating,
+                    movieRemote.releaseDate,
+                    movieRemote.imageUrl
+                )
             }
         }.onFailure {
             it.message
