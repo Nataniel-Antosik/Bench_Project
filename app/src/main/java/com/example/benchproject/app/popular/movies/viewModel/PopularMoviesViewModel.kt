@@ -17,11 +17,10 @@ class PopularMoviesViewModel @Inject constructor(
     private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator
 ) : ViewModel() {
 
-    // TODO On this moment is String type to show data when I will create recyclerView I change type this livedata
-    val responsePopularMovie: LiveData<String>
+    val responsePopularMovie: LiveData<List<Movie>>
         get() = _responsePopularMovie
 
-    private val _responsePopularMovie = MutableLiveData<String>()
+    private val _responsePopularMovie = MutableLiveData<List<Movie>>(emptyList())
 
     init {
         getPopularMovie()
@@ -38,7 +37,7 @@ class PopularMoviesViewModel @Inject constructor(
                         movieModel.releaseDate,
                         movieModel.imageUrl
                     )
-                }.toString()
+                }
             },
             onFailure = {
                 popularMoviesFragmentNavigator.errorSnackBar("Something went wrong")
