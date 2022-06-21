@@ -42,7 +42,7 @@ class PopularMoviesViewModel @Inject constructor(
                         movieModel.releaseDate,
                         movieModel.imageUrl
                     )
-                }.toString()
+                }
             },
             onFailure = {
                 _isLoaderVisible.value = true
