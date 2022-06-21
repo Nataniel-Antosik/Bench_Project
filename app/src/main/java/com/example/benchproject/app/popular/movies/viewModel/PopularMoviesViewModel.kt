@@ -19,16 +19,21 @@ class PopularMoviesViewModel @Inject constructor(
 
     val responsePopularMovie: LiveData<List<Movie>>
         get() = _responsePopularMovie
+    val isLoaderVisible: LiveData<Boolean>
+        get() = _isLoaderVisible
 
     private val _responsePopularMovie = MutableLiveData<List<Movie>>(emptyList())
+    private val _isLoaderVisible = MutableLiveData<Boolean>()
 
     init {
         getPopularMovie()
     }
 
     private fun getPopularMovie() = viewModelScope.launch {
+        _isLoaderVisible.value = false
         getPopularMoviesUseCase().fold(
             onSuccess = {
+                _isLoaderVisible.value = true
                 _responsePopularMovie.value = it.map { movieModel ->
                     Movie(
                         movieModel.id,
@@ -40,6 +45,7 @@ class PopularMoviesViewModel @Inject constructor(
                 }
             },
             onFailure = {
+                _isLoaderVisible.value = true
                 popularMoviesFragmentNavigator.errorSnackBar("Something went wrong")
             }
         )

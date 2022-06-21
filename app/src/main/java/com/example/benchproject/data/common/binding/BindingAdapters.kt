@@ -1,6 +1,7 @@
 package com.example.benchproject.data.common.binding
 
 import android.net.Uri
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,11 @@ fun ImageView.loadMovieImage(imageUrl: String?) {
 @BindingAdapter("updateAdapterData")
 fun RecyclerView.updateAdapter(data: List<Movie>) {
     getRecyclerAdapter(this).uploadMovieData(data)
+}
+
+@BindingAdapter("isVisible")
+fun View.setVisibility(flag: Boolean) {
+    if (flag) this.visibility = View.GONE else this.visibility = View.VISIBLE
 }
 
 // TODO create generic solution for this
