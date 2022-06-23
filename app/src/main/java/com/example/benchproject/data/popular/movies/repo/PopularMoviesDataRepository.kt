@@ -17,10 +17,14 @@ class PopularMoviesDataRepository @Inject constructor(
                     movieRemote.name,
                     movieRemote.rating,
                     movieRemote.releaseDate,
-                    movieRemote.imageUrl
+                    BASE_URL_FOR_IMAGE + movieRemote.imagePath
                 )
             }
         }.onFailure {
             it.message
         }
+
+    companion object {
+        const val BASE_URL_FOR_IMAGE = "https://image.tmdb.org/t/p/w500"
+    }
 }
