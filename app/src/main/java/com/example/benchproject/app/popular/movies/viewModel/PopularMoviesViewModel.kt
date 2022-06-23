@@ -30,7 +30,13 @@ class PopularMoviesViewModel @Inject constructor(
         getPopularMoviesUseCase().fold(
             onSuccess = {
                 _responsePopularMovie.value = it.map { movieModel ->
-                    Movie(movieModel.name, movieModel.rating)
+                    Movie(
+                        movieModel.id,
+                        movieModel.name,
+                        movieModel.rating,
+                        movieModel.releaseDate,
+                        movieModel.imageUrl
+                    )
                 }.toString()
             },
             onFailure = {
