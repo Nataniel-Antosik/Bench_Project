@@ -5,4 +5,7 @@
     <string name="movieName">Movie Name</string>
     <string name="movieReleaseDate">Movie Release Date</string>
     <string name="movieRating">Movie Rating</string>
+    <string name="movieImageDescription">Image shows movie poster</string>
+    <string name="calendarMovieDescription">Image shows calendar icon from material design</string>
+    <string name="starMovieDescription">Image shows star icon from material design</string>
 </resources>
