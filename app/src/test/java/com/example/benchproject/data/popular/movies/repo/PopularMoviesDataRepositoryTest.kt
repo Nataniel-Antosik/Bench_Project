@@ -53,6 +53,15 @@ internal class PopularMoviesDataRepositoryTest {
     }
 
     @Test
+    fun `when api returns throwable, object should hold exception another example`() = runTest {
+        val myNewInstanceResultThrowable = Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
+
+        coEvery { apiService.getPopularMovies() } throws resultThrowable
+
+        tested.getPopularMoviesList().exceptionOrNull() shouldBeEqualTo myNewInstanceResultThrowable
+    }
+
+    @Test
     fun `when api returns data, 'is failure' data status shouldn't be true`() = runTest {
         coEvery { apiService.getPopularMovies() } returns movieResponseRemote
 
