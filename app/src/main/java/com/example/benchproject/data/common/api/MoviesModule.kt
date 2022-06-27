@@ -1,7 +1,7 @@
 package com.example.benchproject.data.common.api
 
 import com.example.benchproject.data.common.constants.Constants
-import com.example.benchproject.data.popular.movies.api.MoviesApi
+import com.example.benchproject.data.movies.common.MoviesApi
 import com.example.benchproject.data.popular.movies.repo.PopularMoviesDataRepository
 import dagger.Module
 import dagger.Provides

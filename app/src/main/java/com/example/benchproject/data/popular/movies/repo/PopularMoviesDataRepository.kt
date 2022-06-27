@@ -1,6 +1,6 @@
 package com.example.benchproject.data.popular.movies.repo
 
-import com.example.benchproject.data.popular.movies.api.MoviesApi
+import com.example.benchproject.data.movies.common.MoviesApi
 import com.example.benchproject.domain.popular.movies.entity.MovieModel
 import com.example.benchproject.domain.popular.movies.repo.PopularMoviesRepository
 import javax.inject.Inject

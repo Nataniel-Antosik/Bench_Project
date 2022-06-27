@@ -1,4 +1,4 @@
-package com.example.benchproject.data.popular.movies.api
+package com.example.benchproject.data.movies.common
 
 import com.example.benchproject.data.common.constants.Constants
 import com.example.benchproject.data.popular.movies.entity.MovieResponseRemote
