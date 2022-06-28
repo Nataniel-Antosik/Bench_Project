@@ -1,7 +1,7 @@
 <resources>
     <string name="appName">Bench Project</string>
     <string name="popularMoviesFragment">Popular Movies</string>
-    <string name="page2">Page 2</string>
+    <string name="favouriteMovies">Favourite Movies</string>
     <string name="movieName">Movie Name</string>
     <string name="movieReleaseDate">Movie Release Date</string>
     <string name="movieRating">Movie Rating</string>

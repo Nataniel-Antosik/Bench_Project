@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_popular_movies"
         android:title="@string/popularMoviesFragment"/>
     <item
-        android:id="@+id/fragment2"
+        android:id="@+id/favouriteMovies"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_filter_2_24"
-        android:title="@string/page2"/>
+        android:title="@string/favouriteMovies"/>
 
 </menu>

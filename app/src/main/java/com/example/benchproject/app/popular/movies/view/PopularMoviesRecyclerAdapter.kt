@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.benchproject.app.common.binding.imageView.loadMovieImage
 import com.example.benchproject.app.popular.movies.entity.Movie
+import com.example.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel
 import com.example.benchproject.databinding.PopularMovieRecyclerItemLayoutBinding
 
-class PopularMoviesRecyclerAdapter : RecyclerView.Adapter<PopularMoviesRecyclerAdapter.PopularMoviesHolder>() {
+class PopularMoviesRecyclerAdapter(private val moviesViewModel: PopularMoviesViewModel) : RecyclerView.Adapter<PopularMoviesRecyclerAdapter.PopularMoviesHolder>() {
 
     private var movies = emptyList<Movie>()
 
@@ -18,6 +19,8 @@ class PopularMoviesRecyclerAdapter : RecyclerView.Adapter<PopularMoviesRecyclerA
             binding.movieReleaseDateTextView.text = movie.releaseDate
             binding.movieRatingTextView.text = movie.rating.toString()
             binding.moviePosterImageView.loadMovieImage(movie.imageUrl)
+            binding.popularMoviesViewModel = moviesViewModel
+            binding.movie = movie
         }
     }
 
