@@ -1,5 +1,7 @@
 package com.example.benchproject.domain.movie.details.entity
 
+import com.example.benchproject.app.movie.details.entity.MovieDetails
+
 data class MovieDetailsModel(
     val id: Int,
     val imageBackgroundUrl: String,
@@ -10,4 +12,16 @@ data class MovieDetailsModel(
     val rating: Double,
     val releaseDate: String,
     val imageUrl: String
-)
+) {
+    fun toUi() = MovieDetails(
+        id,
+        imageBackgroundUrl,
+        name,
+        genres.toUi(),
+        description,
+        budget,
+        rating,
+        releaseDate,
+        imageUrl
+    )
+}

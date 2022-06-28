@@ -8,6 +8,6 @@ data class GenresRemote(
 )
 
 fun List<GenresRemote>.toDomain() =
-    this.map { genresRemote ->
+    map { genresRemote ->
         GenresModel(genresRemote.id, genresRemote.name)
     }
