@@ -2,11 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <!--TODO use view model to binding data to recycler view adapter-->
+
     <data>
         <variable
             name="viewModel"
             type="com.example.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
+
+        <variable
+            name="recyclerAdapterForPopularMovies"
+            type="com.example.benchproject.app.popular.movies.view.PopularMoviesRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +22,10 @@
             android:id="@+id/popularMoviesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:adapter="@{recyclerAdapterForPopularMovies}"
             android:clipToPadding="false"
             android:paddingBottom="88dp"
+            app:updateAdapterData="@{viewModel.responsePopularMovie}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

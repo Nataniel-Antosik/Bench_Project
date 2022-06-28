@@ -21,8 +21,9 @@ class PopularMoviesFragment : Navigator<PopularMoviesFragmentNavigator>() {
         savedInstanceState: Bundle?
     ): View {
         val binding = PopularMoviesFragmentBinding.inflate(inflater, container, false)
-        binding.viewModel = popularMoviesFragmentViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = popularMoviesFragmentViewModel
+        binding.recyclerAdapterForPopularMovies = PopularMoviesRecyclerAdapter()
         return binding.root
     }
 }
