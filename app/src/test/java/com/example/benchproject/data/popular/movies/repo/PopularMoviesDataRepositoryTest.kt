@@ -1,6 +1,6 @@
 package com.example.benchproject.data.popular.movies.repo
 
-import com.example.benchproject.data.movies.common.MoviesApi
+import com.example.benchproject.data.movies.common.api.MoviesApi
 import com.example.benchproject.data.popular.movies.entity.MovieRemote
 import com.example.benchproject.data.popular.movies.entity.MovieResponseRemote
 import com.example.benchproject.domain.popular.movies.entity.MovieModel
