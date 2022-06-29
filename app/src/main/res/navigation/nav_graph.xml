@@ -15,4 +15,9 @@
         android:name="com.example.benchproject.app.fragment2.Fragment2"
         android:label="fragment2"
         tools:layout="@layout/fragment_2" />
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.example.benchproject.app.movie.details.view.MovieDetailsFragment"
+        android:label="MovieDetailsFragment"
+        tools:layout="@layout/movie_details_fragment"/>
 </navigation>
