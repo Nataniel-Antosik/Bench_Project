@@ -21,36 +21,34 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(LiveDataTest::class)
 internal class PopularMoviesViewModelTest {
 
-    private val movieListModel = Result.success(
-        listOf(
-            MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com"),
-            MovieModel(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
-            MovieModel(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
-        )
+    val moviesModel = listOf(
+        MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com"),
+        MovieModel(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
+        MovieModel(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
     )
-    private val movieList = listOf(
+    val movies = listOf(
         Movie(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com"),
         Movie(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
         Movie(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
     )
-    private val badResponseFromRepository =
+    val badResponseFromRepository =
         Result.failure<List<MovieModel>>(
             Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
         )
-    private val getPopularMoviesUseCase: GetPopularMoviesUseCase = mockk()
-    private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator = mockk()
+    val getPopularMoviesUseCase: GetPopularMoviesUseCase = mockk()
+    val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator = mockk()
 
     @Test
     fun `when method get data from use case, it should be mapped to the movie type`() = runTest {
-        coEvery { getPopularMoviesUseCase() } returns movieListModel
+        coEvery { getPopularMoviesUseCase() } returns Result.success(moviesModel)
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
-        tested.responsePopularMovie.value shouldBeEqualTo movieList
+        tested.popularMovies.value shouldBeEqualTo movies
     }
 
     @Test
     fun `when method get data from use case, loader visibility should be true`() = runTest {
-        coEvery { getPopularMoviesUseCase() } returns movieListModel
+        coEvery { getPopularMoviesUseCase() } returns Result.success(moviesModel)
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
         tested.isLoaderVisible.value shouldBe true

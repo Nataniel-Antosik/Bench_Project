@@ -1,6 +1,5 @@
 package com.example.benchproject.data.movie.details.repo
 
-import com.example.benchproject.data.movie.details.entity.toDomain
 import com.example.benchproject.data.movies.common.api.MoviesApi
 import com.example.benchproject.domain.movie.details.repo.MovieDetailsRepository
 import javax.inject.Inject
