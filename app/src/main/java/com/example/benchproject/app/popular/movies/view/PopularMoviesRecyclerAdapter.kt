@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.benchproject.app.common.binding.imageView.loadMovieImage
 import com.example.benchproject.app.popular.movies.entity.Movie
-import com.example.benchproject.data.common.binding.loadMovieImage
 import com.example.benchproject.databinding.PopularMovieRecyclerItemLayoutBinding
 
 class PopularMoviesRecyclerAdapter : RecyclerView.Adapter<PopularMoviesRecyclerAdapter.PopularMoviesHolder>() {
