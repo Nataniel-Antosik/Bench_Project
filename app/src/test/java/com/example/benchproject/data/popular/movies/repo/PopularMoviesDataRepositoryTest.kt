@@ -6,11 +6,13 @@ import com.example.benchproject.data.popular.movies.entity.MovieResponseRemote
 import com.example.benchproject.domain.popular.movies.entity.MovieModel
 import io.mockk.coEvery
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class PopularMoviesDataRepositoryTest {
 
     private val movieListRemote = listOf(

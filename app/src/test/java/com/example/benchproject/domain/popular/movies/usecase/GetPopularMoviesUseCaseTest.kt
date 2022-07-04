@@ -4,11 +4,13 @@ import com.example.benchproject.domain.popular.movies.entity.MovieModel
 import com.example.benchproject.domain.popular.movies.repo.PopularMoviesRepository
 import io.mockk.coEvery
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class GetPopularMoviesUseCaseTest {
 
     private val movieListModel = Result.success(
