@@ -4,6 +4,7 @@ import com.example.benchproject.domain.movie.details.entity.GenresModel
 import com.example.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.example.benchproject.domain.movie.details.repo.MovieDetailsRepository
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -43,6 +44,15 @@ internal class GetMovieDetailsUseCaseTest {
         coEvery { moviesDetailsRepository.getMovieDetails(movieId) } returns movieDetailsModel
 
         tested(movieId) shouldBeEqualTo movieDetailsModel
+    }
+
+    @Test
+    fun `when getMovieDetails called it takes movieId should use proper movieId`() = runTest {
+        coEvery { moviesDetailsRepository.getMovieDetails(any()) } returns movieDetailsModel
+
+        tested(movieId)
+
+        coVerify { moviesDetailsRepository.getMovieDetails(movieId) }
     }
 
     @Test
