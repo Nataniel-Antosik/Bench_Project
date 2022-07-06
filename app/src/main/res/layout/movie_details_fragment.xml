@@ -14,6 +14,16 @@
         android:layout_height="match_parent"
         tools:context=".app.movie.details.view.MovieDetailsFragment">
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:isVisible="@{viewModel.isLoaderVisible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/movieDetailsBackgroundImageView"
             android:layout_width="match_parent"
@@ -54,12 +64,14 @@
             app:layout_constraintTop_toBottomOf="@+id/movieDetailsBackgroundImageView" />
 
         <ScrollView
+            android:id="@+id/scrollViewForDetails"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
             android:orientation="vertical"
-            android:scrollbars="none"
             android:paddingBottom="58dp"
+            android:scrollbars="none"
+            app:isVisible="@{viewModel.isScreenElementsVisible}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,10 +86,10 @@
                     android:id="@+id/movieDetailsGenresLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="@string/genresLabel"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:gravity="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +101,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     app:genresChips="@{viewModel.responseMovieDetails.genres}"
-                    app:singleLine="false"/>
+                    app:singleLine="false" />
 
                 <TextView
                     android:id="@+id/movieDetailsDescriptionLabel"
@@ -124,8 +136,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
                     android:gravity="center"
-                    android:textSize="16sp"
-                    android:text="@{viewModel.responseMovieDetails.budgetText()}" />
+                    android:text="@{viewModel.responseMovieDetails.budgetText()}"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/movieDetailsRatingLabel"
@@ -142,8 +154,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
                     android:gravity="center"
-                    android:textSize="16sp"
-                    android:text="@{String.valueOf(viewModel.responseMovieDetails.rating)}" />
+                    android:text="@{String.valueOf(viewModel.responseMovieDetails.rating)}"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/movieDetailsReleaseDateLabel"
@@ -160,8 +172,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
                     android:gravity="center"
-                    android:textSize="16sp"
-                    android:text="@{viewModel.responseMovieDetails.releaseDate}" />
+                    android:text="@{viewModel.responseMovieDetails.releaseDate}"
+                    android:textSize="16sp" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
