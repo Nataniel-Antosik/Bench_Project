@@ -29,6 +29,10 @@ class PopularMoviesViewModel @Inject constructor(
         getPopularMovie()
     }
 
+    fun navigateToMovieDetailsFragment(movieId: Int) {
+        popularMoviesFragmentNavigator.navigateToMovieDetailsFragment(movieId)
+    }
+
     private fun getPopularMovie() = viewModelScope.launch {
         _isLoaderVisible.value = false
         getPopularMoviesUseCase().fold(

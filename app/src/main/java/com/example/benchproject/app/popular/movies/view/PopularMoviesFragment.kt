@@ -23,7 +23,7 @@ class PopularMoviesFragment : Navigator<PopularMoviesFragmentNavigator>() {
         val binding = PopularMoviesFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = popularMoviesFragmentViewModel
-        binding.recyclerAdapterForPopularMovies = PopularMoviesRecyclerAdapter()
+        binding.recyclerAdapterForPopularMovies = PopularMoviesRecyclerAdapter(popularMoviesFragmentViewModel)
         return binding.root
     }
 }

@@ -9,15 +9,23 @@
         android:id="@+id/popularMoviesFragment"
         android:name="com.example.benchproject.app.popular.movies.view.PopularMoviesFragment"
         android:label="popularMoviesFragment"
-        tools:layout="@layout/popular_movies_fragment" />
+        tools:layout="@layout/popular_movies_fragment" >
+        <action
+            android:id="@+id/toMovieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.benchproject.app.fragment2.Fragment2"
-        android:label="fragment2"
-        tools:layout="@layout/fragment_2" />
+        android:id="@+id/favouriteMovies"
+        android:name="com.example.benchproject.app.favourite.movies.FavouriteMovies"
+        android:label="favouriteMovies"
+        tools:layout="@layout/favourite_movies" />
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.benchproject.app.movie.details.view.MovieDetailsFragment"
         android:label="MovieDetailsFragment"
-        tools:layout="@layout/movie_details_fragment"/>
+        tools:layout="@layout/movie_details_fragment">
+        <argument
+            android:name="movieId"
+            app:argType="integer"/>
+    </fragment>
 </navigation>

@@ -2,10 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="popularMoviesViewModel"
+            type="com.example.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
+        <variable
+            name="movie"
+            type="com.example.benchproject.app.popular.movies.entity.Movie" />
+    </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
+        android:onClick="@{() -> popularMoviesViewModel.navigateToMovieDetailsFragment(movie.id)}"
         app:cardCornerRadius="6dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

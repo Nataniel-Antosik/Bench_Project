@@ -2,15 +2,16 @@ package com.example.benchproject.app.movie.details.viewModel
 
 import com.example.benchproject.app.movie.details.entity.Genres
 import com.example.benchproject.app.movie.details.entity.MovieDetails
+import com.example.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
 import com.example.benchproject.domain.movie.details.entity.GenresModel
 import com.example.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.example.benchproject.domain.movie.details.usecase.GetMovieDetailsUseCase
 import com.example.benchproject.test.common.LiveDataTest
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.amshove.kluent.any
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -49,16 +50,26 @@ internal class MovieDetailsViewModelTest {
         "2022-02-10",
         "https://image.tmdb.org/t/p/w500/something1.com"
     )
+    private val movieId = 54431
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase = mockk()
+    private val fragmentArgs = MovieDetailsFragmentArgs(movieId)
 
     @Test
-    fun `when method get data from use case, it should be mapped to the movie details type`() =
-        runTest {
-            coEvery { getMovieDetailsUseCase(any()) } returns Result.success(movieDetailsModel)
-            val tested = MovieDetailsViewModel(getMovieDetailsUseCase)
+    fun `when method get data from use case, it should be mapped to the movie details type`() = runTest {
+        coEvery { getMovieDetailsUseCase(any()) } returns Result.success(movieDetailsModel)
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
 
-            tested.getMovieDetails(any())
+        tested.getMovieDetails()
 
-            tested.responseMovieDetails.value shouldBeEqualTo movieDetails
-        }
+        tested.responseMovieDetails.value shouldBeEqualTo movieDetails
+    }
+
+    @Test
+    fun `when getMovieDetailsUseCase called it takes movieId should use proper movieId`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns Result.success(movieDetailsModel)
+
+        getMovieDetailsUseCase(movieId)
+
+        coVerify { getMovieDetailsUseCase(movieId) }
+    }
 }
