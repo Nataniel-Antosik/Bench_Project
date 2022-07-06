@@ -2,7 +2,6 @@ package com.example.benchproject.data.movie.details.repo
 
 import com.example.benchproject.data.movie.details.entity.GenresRemote
 import com.example.benchproject.data.movie.details.entity.MovieDetailsRemote
-import com.example.benchproject.data.movie.details.entity.toDomain
 import com.example.benchproject.data.movies.common.api.MoviesApi
 import com.example.benchproject.domain.movie.details.entity.GenresModel
 import com.example.benchproject.domain.movie.details.entity.MovieDetailsModel
@@ -90,18 +89,5 @@ internal class MovieDetailsDataRepositoryTest {
         tested.getMovieDetails(movieId)
 
         coVerify { apiService.getMovieDetails(movieId) }
-    }
-
-    @Test
-    fun `when function get data, it should be mapped to movie details model type`() {
-        movieDetailsRemote.toDomain() shouldBeEqualTo movieDetailsModel
-    }
-
-    @Test
-    fun `when function get data, it should be mapped to genres model type`() {
-        val genresRemote = listOf(GenresRemote(1, "Test1"), GenresRemote(2, "Test2"))
-        val genresModel = listOf(GenresModel(1, "Test1"), GenresModel(2, "Test2"))
-
-        genresRemote.toDomain() shouldBeEqualTo genresModel
     }
 }
