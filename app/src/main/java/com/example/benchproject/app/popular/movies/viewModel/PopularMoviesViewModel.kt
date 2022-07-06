@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.benchproject.app.popular.movies.entity.Movie
 import com.example.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
+import com.example.benchproject.domain.popular.movies.entity.toUi
 import com.example.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,12 +18,12 @@ class PopularMoviesViewModel @Inject constructor(
     private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator
 ) : ViewModel() {
 
-    val responsePopularMovie: LiveData<List<Movie>>
-        get() = _responsePopularMovie
+    val popularMovies: LiveData<List<Movie>>
+        get() = _popularMovies
     val isLoaderVisible: LiveData<Boolean>
         get() = _isLoaderVisible
 
-    private val _responsePopularMovie = MutableLiveData<List<Movie>>(emptyList())
+    private val _popularMovies = MutableLiveData<List<Movie>>(emptyList())
     private val _isLoaderVisible = MutableLiveData<Boolean>()
 
     init {
@@ -36,17 +37,9 @@ class PopularMoviesViewModel @Inject constructor(
     private fun getPopularMovie() = viewModelScope.launch {
         _isLoaderVisible.value = false
         getPopularMoviesUseCase().fold(
-            onSuccess = {
+            onSuccess = { moviesModel ->
                 _isLoaderVisible.value = true
-                _responsePopularMovie.value = it.map { movieModel ->
-                    Movie(
-                        movieModel.id,
-                        movieModel.name,
-                        movieModel.rating,
-                        movieModel.releaseDate,
-                        movieModel.imageUrl
-                    )
-                }
+                _popularMovies.value = moviesModel.toUi()
             },
             onFailure = {
                 _isLoaderVisible.value = true
