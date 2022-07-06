@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 
 internal class MovieDetailsModelTest {
 
-    private val movieDetailsModel = MovieDetailsModel(
+    val movieDetailsModel = MovieDetailsModel(
         54431,
         "https://image.tmdb.org/t/p/w500/something1Background.com",
         "Test1",
@@ -22,7 +22,7 @@ internal class MovieDetailsModelTest {
         "2022-02-10",
         "https://image.tmdb.org/t/p/w500/something1.com"
     )
-    private val movieDetails = MovieDetails(
+    val movieDetails = MovieDetails(
         54431,
         "https://image.tmdb.org/t/p/w500/something1Background.com",
         "Test1",

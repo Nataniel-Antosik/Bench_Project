@@ -13,19 +13,19 @@ import org.junit.jupiter.api.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class GetPopularMoviesUseCaseTest {
 
-    private val movieListModel = Result.success(
+    val movieListModel = Result.success(
         listOf(
             MovieModel(10001, "Test1", 5.4, "2022-06-23", "https:/something1.com"),
             MovieModel(10002, "Test2", 6.4, "2022-06-22", "https:/something2.com"),
             MovieModel(10003, "Test3", 3.4, "2022-06-21", "https:/something3.com")
         )
     )
-    private val badResponseFromRepository =
+    val badResponseFromRepository =
         Result.failure<List<MovieModel>>(
             Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
         )
-    private val popularMoviesRepository: PopularMoviesRepository = mockk()
-    private val tested = GetPopularMoviesUseCase(popularMoviesRepository)
+    val popularMoviesRepository: PopularMoviesRepository = mockk()
+    val tested = GetPopularMoviesUseCase(popularMoviesRepository)
 
     @Test
     fun `When method get data from repository, it should return movie model type`() = runTest {
