@@ -2,14 +2,10 @@ package com.example.benchproject.app.common.binding.recyclerView
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.benchproject.app.popular.movies.entity.Movie
-import com.example.benchproject.app.popular.movies.view.PopularMoviesRecyclerAdapter
+import com.example.benchproject.app.common.recyclerView.BaseAdapter
 
-@BindingAdapter("updateAdapterData")
-fun RecyclerView.updateAdapter(data: List<Movie>) {
-    getRecyclerAdapter(this).uploadMovieData(data)
+@Suppress("UNCHECKED_CAST")
+@BindingAdapter("adapterData")
+fun RecyclerView.updateAdapterData(data: List<Any>) {
+    (adapter!! as BaseAdapter<Any>).uploadData(data)
 }
-
-// TODO create generic solution for this
-private fun getRecyclerAdapter(recyclerView: RecyclerView): PopularMoviesRecyclerAdapter =
-    recyclerView.adapter as PopularMoviesRecyclerAdapter

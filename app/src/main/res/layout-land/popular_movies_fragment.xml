@@ -35,7 +35,7 @@
             android:adapter="@{recyclerAdapterForPopularMovies}"
             android:clipToPadding="false"
             android:paddingBottom="88dp"
-            app:updateAdapterData="@{viewModel.popularMovies}"
+            app:adapterData="@{viewModel.popularMovies}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
