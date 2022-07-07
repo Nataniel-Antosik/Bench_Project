@@ -1,5 +1,6 @@
 package com.example.benchproject.app.popular.movies.viewModel
 
+import com.example.benchproject.R
 import com.example.benchproject.app.popular.movies.entity.Movie
 import com.example.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
 import com.example.benchproject.domain.popular.movies.entity.MovieModel
@@ -36,7 +37,6 @@ internal class PopularMoviesViewModelTest {
         Result.failure<List<MovieModel>>(
             Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
         )
-    val errorMessage = "Something went wrong"
     val getPopularMoviesUseCase: GetPopularMoviesUseCase = mockk()
     val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator = mockk()
 
@@ -59,7 +59,7 @@ internal class PopularMoviesViewModelTest {
     @Test
     fun `when method get throwable from use case, loader visibility should be true`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns badResponse
-        every { popularMoviesFragmentNavigator.errorSnackBar(errorMessage) } just Runs
+        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies) } just Runs
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
         tested.isLoaderVisible.value shouldBe true
@@ -68,10 +68,10 @@ internal class PopularMoviesViewModelTest {
     @Test
     fun `when method get throwable from use case, errorSnackBar should run`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns badResponse
-        every { popularMoviesFragmentNavigator.errorSnackBar(errorMessage) } just Runs
+        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies) } just Runs
 
-        popularMoviesFragmentNavigator.errorSnackBar(errorMessage)
+        popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies)
 
-        verify { popularMoviesFragmentNavigator.errorSnackBar(errorMessage) }
+        verify { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies) }
     }
 }

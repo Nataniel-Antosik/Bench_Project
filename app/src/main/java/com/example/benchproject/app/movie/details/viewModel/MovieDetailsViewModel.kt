@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.benchproject.R
 import com.example.benchproject.app.movie.details.entity.MovieDetails
 import com.example.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
 import com.example.benchproject.app.movie.details.view.MovieDetailsFragmentNavigator
@@ -42,7 +43,7 @@ class MovieDetailsViewModel @Inject constructor(
             onFailure = {
                 _isVisibleScreenElements.value = true
                 _isLoaderVisible.value = true
-                movieDetailsFragmentNavigator.errorSnackBar("Something went wrong")
+                movieDetailsFragmentNavigator.errorSnackBar(R.string.errorMessageMovies)
             }
         )
     }

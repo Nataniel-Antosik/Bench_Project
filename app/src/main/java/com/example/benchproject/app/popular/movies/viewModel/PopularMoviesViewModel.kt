@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.benchproject.R
 import com.example.benchproject.app.popular.movies.entity.Movie
 import com.example.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
 import com.example.benchproject.domain.popular.movies.entity.toUi
@@ -43,7 +44,7 @@ class PopularMoviesViewModel @Inject constructor(
             },
             onFailure = {
                 _isLoaderVisible.value = true
-                popularMoviesFragmentNavigator.errorSnackBar("Something went wrong")
+                popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies)
             }
         )
     }
