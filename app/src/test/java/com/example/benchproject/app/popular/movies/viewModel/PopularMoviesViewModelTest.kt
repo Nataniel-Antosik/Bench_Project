@@ -10,6 +10,7 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBe
@@ -31,10 +32,11 @@ internal class PopularMoviesViewModelTest {
         Movie(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
         Movie(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
     )
-    val badResponseFromRepository =
+    val badResponse =
         Result.failure<List<MovieModel>>(
             Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
         )
+    val errorMessage = "Something went wrong"
     val getPopularMoviesUseCase: GetPopularMoviesUseCase = mockk()
     val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator = mockk()
 
@@ -56,10 +58,20 @@ internal class PopularMoviesViewModelTest {
 
     @Test
     fun `when method get throwable from use case, loader visibility should be true`() = runTest {
-        coEvery { getPopularMoviesUseCase() } returns badResponseFromRepository
-        every { popularMoviesFragmentNavigator.errorSnackBar("Something went wrong") } just Runs
+        coEvery { getPopularMoviesUseCase() } returns badResponse
+        every { popularMoviesFragmentNavigator.errorSnackBar(errorMessage) } just Runs
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
         tested.isLoaderVisible.value shouldBe true
+    }
+
+    @Test
+    fun `when method get throwable from use case, errorSnackBar should run`() = runTest {
+        coEvery { getPopularMoviesUseCase() } returns badResponse
+        every { popularMoviesFragmentNavigator.errorSnackBar(errorMessage) } just Runs
+
+        popularMoviesFragmentNavigator.errorSnackBar(errorMessage)
+
+        verify { popularMoviesFragmentNavigator.errorSnackBar(errorMessage) }
     }
 }
