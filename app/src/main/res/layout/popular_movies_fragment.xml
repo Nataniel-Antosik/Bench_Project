@@ -6,11 +6,11 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
+            type="com.antosik.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
 
         <variable
             name="recyclerAdapterForPopularMovies"
-            type="com.example.benchproject.app.popular.movies.view.PopularMoviesRecyclerAdapter" />
+            type="com.antosik.benchproject.app.popular.movies.view.PopularMoviesRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
