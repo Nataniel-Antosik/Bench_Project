@@ -8,6 +8,9 @@
     <string name="movieImageDescription">Image shows movie poster</string>
     <string name="calendarMovieDescription">Image shows calendar icon from material design</string>
     <string name="starMovieDescription">Image shows star icon from material design</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="helloBlankFragment">Hello blank fragment</string>
+    <string name="descriptionLabel">Description</string>
+    <string name="budgetLabel">Budget</string>
+    <string name="ratingLabel">Rating</string>
+    <string name="releaseDateLabel">Release Date</string>
+    <string name="genresLabel">Genres</string>
 </resources>

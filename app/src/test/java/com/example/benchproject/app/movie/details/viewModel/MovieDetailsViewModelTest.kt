@@ -10,7 +10,6 @@ import com.example.benchproject.domain.movie.details.usecase.GetMovieDetailsUseC
 import com.example.benchproject.test.common.LiveDataTest
 import io.mockk.Runs
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
@@ -73,15 +72,6 @@ internal class MovieDetailsViewModelTest {
         tested.getMovieDetails()
 
         tested.responseMovieDetails.value shouldBeEqualTo movieDetails
-    }
-
-    @Test
-    fun `when getMovieDetailsUseCase called it takes movieId should use proper movieId`() = runTest {
-        coEvery { getMovieDetailsUseCase(movieId) } returns Result.success(movieDetailsModel)
-
-        getMovieDetailsUseCase(movieId)
-
-        coVerify { getMovieDetailsUseCase(movieId) }
     }
 
     @Test
