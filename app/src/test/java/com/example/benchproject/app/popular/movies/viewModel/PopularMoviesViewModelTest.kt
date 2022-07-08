@@ -8,10 +8,11 @@ import com.example.benchproject.domain.popular.movies.usecase.GetPopularMoviesUs
 import com.example.benchproject.test.common.LiveDataTest
 import io.mockk.Runs
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBe
@@ -59,19 +60,20 @@ internal class PopularMoviesViewModelTest {
     @Test
     fun `when method get throwable from use case, loader visibility should be true`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns badResponse
-        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies) } just Runs
+        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = any()) } just Runs
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
         tested.isLoaderVisible.value shouldBe true
     }
 
     @Test
-    fun `when method get throwable from use case, errorSnackBar should run`() = runTest {
+    fun `when method get throwable from use case, errorSnackBar should retry request to API`() = runTest {
+        val slot = slot<() -> Unit>()
         coEvery { getPopularMoviesUseCase() } returns badResponse
-        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies) } just Runs
+        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = capture(slot)) } answers { slot.captured() } andThenAnswer {}
 
-        popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies)
+        PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
-        verify { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies) }
+        coVerify(exactly = 2) { getPopularMoviesUseCase() }
     }
 }
