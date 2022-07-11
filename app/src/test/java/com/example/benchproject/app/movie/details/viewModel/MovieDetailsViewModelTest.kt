@@ -16,6 +16,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -82,5 +83,47 @@ internal class MovieDetailsViewModelTest {
         movieDetailsFragmentNavigator.errorSnackBar(errorMessage)
 
         verify { movieDetailsFragmentNavigator.errorSnackBar(errorMessage) }
+    }
+
+    @Test
+    fun `when getMovieDetailsUseCase called and returns data isLoaderVisible should be true`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns Result.success(movieDetailsModel)
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+
+        tested.getMovieDetails()
+
+        tested.isLoaderVisible.value shouldBe true
+    }
+
+    @Test
+    fun `when getMovieDetailsUseCase called and returns throwable isLoaderVisible should be true`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns badResponse
+        every { movieDetailsFragmentNavigator.errorSnackBar(errorMessage) } just Runs
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+
+        tested.getMovieDetails()
+
+        tested.isLoaderVisible.value shouldBe true
+    }
+
+    @Test
+    fun `when getMovieDetailsUseCase called and returns data isScreenElementsVisible should be false`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns Result.success(movieDetailsModel)
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+
+        tested.getMovieDetails()
+
+        tested.isScreenElementsVisible.value shouldBe false
+    }
+
+    @Test
+    fun `when getMovieDetailsUseCase called and returns throwable isScreenElementsVisible should be true`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns badResponse
+        every { movieDetailsFragmentNavigator.errorSnackBar(errorMessage) } just Runs
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+
+        tested.getMovieDetails()
+
+        tested.isScreenElementsVisible.value shouldBe true
     }
 }

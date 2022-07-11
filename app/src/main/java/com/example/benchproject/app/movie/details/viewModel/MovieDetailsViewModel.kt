@@ -22,16 +22,26 @@ class MovieDetailsViewModel @Inject constructor(
 
     val responseMovieDetails: LiveData<MovieDetails>
         get() = _responseMovieDetails
+    val isLoaderVisible: LiveData<Boolean>
+        get() = _isLoaderVisible
+    val isScreenElementsVisible: LiveData<Boolean>
+        get() = _isVisibleScreenElements
 
     private val _responseMovieDetails = MutableLiveData<MovieDetails>()
+    private val _isVisibleScreenElements = MutableLiveData(true)
+    private val _isLoaderVisible = MutableLiveData(false)
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
     fun getMovieDetails() = viewModelScope.launch {
         getMovieDetailsUseCase(args.movieId).fold(
             onSuccess = { movieDetailsModel ->
+                _isVisibleScreenElements.value = false
+                _isLoaderVisible.value = true
                 _responseMovieDetails.value = movieDetailsModel.toUi()
             },
             onFailure = {
+                _isVisibleScreenElements.value = true
+                _isLoaderVisible.value = true
                 movieDetailsFragmentNavigator.errorSnackBar("Something went wrong")
             }
         )
