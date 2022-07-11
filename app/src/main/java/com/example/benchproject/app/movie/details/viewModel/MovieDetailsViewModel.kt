@@ -26,7 +26,11 @@ class MovieDetailsViewModel @Inject constructor(
     private val _responseMovieDetails = MutableLiveData<MovieDetails>()
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
-    fun getMovieDetails() = viewModelScope.launch {
+    init {
+        getMovieDetails()
+    }
+
+    private fun getMovieDetails() = viewModelScope.launch {
         getMovieDetailsUseCase(args.movieId).fold(
             onSuccess = { movieDetailsModel ->
                 _responseMovieDetails.value = movieDetailsModel.toUi()

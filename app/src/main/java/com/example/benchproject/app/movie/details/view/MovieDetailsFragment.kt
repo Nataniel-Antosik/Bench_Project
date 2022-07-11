@@ -21,7 +21,6 @@ class MovieDetailsFragment : Navigator<MovieDetailsFragmentNavigator>() {
         savedInstanceState: Bundle?
     ): View {
         val binding = MovieDetailsFragmentBinding.inflate(inflater, container, false)
-        movieDetailsViewModel.getMovieDetails()
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = movieDetailsViewModel
         return binding.root
