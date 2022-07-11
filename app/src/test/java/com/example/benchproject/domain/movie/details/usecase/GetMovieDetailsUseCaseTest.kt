@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class GetMovieDetailsUseCaseTest {
-    private val movieDetailsModel = Result.success(
+    val movieDetailsModel = Result.success(
         MovieDetailsModel(
             54431,
             "https://image.tmdb.org/t/p/w500/something1Background.com",
@@ -31,13 +31,13 @@ internal class GetMovieDetailsUseCaseTest {
             "https://image.tmdb.org/t/p/w500/something1.com"
         )
     )
-    private val badResponseFromRepository =
+    val badResponseFromRepository =
         Result.failure<MovieDetailsModel>(
             Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
         )
-    private val moviesDetailsRepository: MovieDetailsRepository = mockk()
-    private val movieId = 54431
-    private val tested = GetMovieDetailsUseCase(moviesDetailsRepository)
+    val moviesDetailsRepository: MovieDetailsRepository = mockk()
+    val movieId = 54431
+    val tested = GetMovieDetailsUseCase(moviesDetailsRepository)
 
     @Test
     fun `when method get data from repository, it should return movie details model`() = runTest {

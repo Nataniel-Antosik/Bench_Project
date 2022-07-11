@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class MovieDetailsDataRepositoryTest {
 
-    private val movieDetailsRemote = MovieDetailsRemote(
+    val movieDetailsRemote = MovieDetailsRemote(
         54431,
         "/something1Background.com",
         "Test1",
@@ -32,7 +32,7 @@ internal class MovieDetailsDataRepositoryTest {
         "2022-02-10",
         "/something1.com"
     )
-    private val movieDetailsModel = MovieDetailsModel(
+    val movieDetailsModel = MovieDetailsModel(
         54431,
         "https://image.tmdb.org/t/p/w500/something1Background.com",
         "Test1",
@@ -47,12 +47,12 @@ internal class MovieDetailsDataRepositoryTest {
         "2022-02-10",
         "https://image.tmdb.org/t/p/w500/something1.com"
     )
-    private val apiService: MoviesApi = mockk()
-    private val resultThrowable = Throwable(
+    val apiService: MoviesApi = mockk()
+    val resultThrowable = Throwable(
         "Unable to resolve host \"api.themoviedb.org\": No address associated with hostname"
     )
-    private val movieId = 54431
-    private val tested = MovieDetailsDataRepository(apiService)
+    val movieId = 54431
+    val tested = MovieDetailsDataRepository(apiService)
 
     @Test
     fun `when method get data from api, it should be mapped to the movie details model`() = runTest {
