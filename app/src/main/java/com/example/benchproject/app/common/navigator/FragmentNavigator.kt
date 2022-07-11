@@ -16,7 +16,7 @@ abstract class FragmentNavigator {
             this.fragment = null
     }
 
-    fun errorSnackBar(message: String) {
-        Snackbar.make(fragment!!.requireView(), message, Snackbar.LENGTH_SHORT).show()
+    fun errorSnackBar(messageId: Int) {
+        Snackbar.make(fragment!!.requireView(), fragment!!.getString(messageId), Snackbar.LENGTH_SHORT).show()
     }
 }
