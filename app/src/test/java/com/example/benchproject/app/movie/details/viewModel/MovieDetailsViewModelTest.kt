@@ -70,8 +70,6 @@ internal class MovieDetailsViewModelTest {
         coEvery { getMovieDetailsUseCase(any()) } returns Result.success(movieDetailsModel)
         val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
 
-        tested.getMovieDetails()
-
         tested.responseMovieDetails.value shouldBeEqualTo movieDetails
     }
 

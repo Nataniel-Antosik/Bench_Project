@@ -33,7 +33,11 @@ class MovieDetailsViewModel @Inject constructor(
     private val _isLoaderVisible = MutableLiveData(false)
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
-    fun getMovieDetails() = viewModelScope.launch {
+    init {
+        getMovieDetails()
+    }
+
+    private fun getMovieDetails() = viewModelScope.launch {
         getMovieDetailsUseCase(args.movieId).fold(
             onSuccess = { movieDetailsModel ->
                 _isVisibleScreenElements.value = false
