@@ -1,6 +1,7 @@
 package com.example.benchproject.app.common.navigator
 
 import androidx.fragment.app.Fragment
+import com.example.benchproject.R
 import com.google.android.material.snackbar.Snackbar
 
 abstract class FragmentNavigator {
@@ -16,7 +17,15 @@ abstract class FragmentNavigator {
             this.fragment = null
     }
 
-    fun errorSnackBar(messageId: Int) {
-        Snackbar.make(fragment!!.requireView(), fragment!!.getString(messageId), Snackbar.LENGTH_SHORT).show()
+    fun errorSnackBar(messageId: Int, onAction: () -> Unit) {
+        val fragment = fragment!!
+        Snackbar.make(fragment.requireView(), fragment.getString(messageId), Snackbar.LENGTH_INDEFINITE)
+            .setAction(fragment.getString(R.string.snackbarRetry)) { onAction() }
+            .show()
+    }
+
+    fun snackBarMessage(messageId: Int) {
+        val fragment = fragment!!
+        Snackbar.make(fragment.requireView(), fragment.getString(messageId), Snackbar.LENGTH_SHORT).show()
     }
 }
