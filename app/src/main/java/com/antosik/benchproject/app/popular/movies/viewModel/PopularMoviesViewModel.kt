@@ -47,14 +47,14 @@ class PopularMoviesViewModel @Inject constructor(
                     _isLoaderVisible.value = true
                     popularMoviesFragmentNavigator.errorSnackBar(
                         R.string.errorMessageMovies,
-                        onAction = { retryGetPopularMovie() }
+                        onAction = { retryLoadPopularMovie() }
                     )
                 }
             )
         }
     }
 
-    private fun retryGetPopularMovie() {
+    private fun retryLoadPopularMovie() {
         loadPopularMovie()
     }
 }
