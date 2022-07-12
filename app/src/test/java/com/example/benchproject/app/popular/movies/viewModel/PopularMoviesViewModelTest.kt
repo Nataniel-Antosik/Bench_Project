@@ -42,7 +42,7 @@ internal class PopularMoviesViewModelTest {
     val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator = mockk()
 
     @Test
-    fun `when method get data from use case, it should be mapped to the movie type`() = runTest {
+    fun `when getPopularMoviesUseCase called and load data, it should be movie type`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns Result.success(moviesModel)
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
@@ -50,7 +50,7 @@ internal class PopularMoviesViewModelTest {
     }
 
     @Test
-    fun `when method get data from use case, loader visibility should be true`() = runTest {
+    fun `when getPopularMoviesUseCase called and load data, isLoaderVisible should be true`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns Result.success(moviesModel)
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
@@ -58,7 +58,7 @@ internal class PopularMoviesViewModelTest {
     }
 
     @Test
-    fun `when method get throwable from use case, loader visibility should be true`() = runTest {
+    fun `when getPopularMoviesUseCase called and load throwable, isLoaderVisible should be true`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns badResponse
         every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = any()) } just Runs
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
@@ -67,7 +67,7 @@ internal class PopularMoviesViewModelTest {
     }
 
     @Test
-    fun `when method get throwable from use case, errorSnackBar should retry request to API`() = runTest {
+    fun `when getPopularMoviesUseCase called and load throwable, errorSnackBar should retry request to API`() = runTest {
         val slot = slot<() -> Unit>()
         coEvery { getPopularMoviesUseCase() } returns badResponse
         every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = capture(slot)) } answers { slot.captured() } andThenAnswer {}

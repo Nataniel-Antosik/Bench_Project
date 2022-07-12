@@ -34,28 +34,30 @@ class MovieDetailsViewModel @Inject constructor(
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
     init {
-        getMovieDetails()
+        loadMovieDetails()
     }
 
-    private fun getMovieDetails() = viewModelScope.launch {
-        getMovieDetailsUseCase(args.movieId).fold(
-            onSuccess = { movieDetailsModel ->
-                _isVisibleScreenElements.value = false
-                _isLoaderVisible.value = true
-                _responseMovieDetails.value = movieDetailsModel.toUi()
-            },
-            onFailure = {
-                _isVisibleScreenElements.value = true
-                _isLoaderVisible.value = true
-                movieDetailsFragmentNavigator.errorSnackBar(
-                    R.string.errorMessageMovies,
-                    onAction = { retryGetMovieDetails() }
-                )
-            }
-        )
+    private fun loadMovieDetails() {
+        viewModelScope.launch {
+            getMovieDetailsUseCase(args.movieId).fold(
+                onSuccess = { movieDetailsModel ->
+                    _isVisibleScreenElements.value = false
+                    _isLoaderVisible.value = true
+                    _responseMovieDetails.value = movieDetailsModel.toUi()
+                },
+                onFailure = {
+                    _isVisibleScreenElements.value = true
+                    _isLoaderVisible.value = true
+                    movieDetailsFragmentNavigator.errorSnackBar(
+                        R.string.errorMessageMovies,
+                        onAction = { retryGetMovieDetails() }
+                    )
+                }
+            )
+        }
     }
 
     private fun retryGetMovieDetails() {
-        getMovieDetails()
+        loadMovieDetails()
     }
 }

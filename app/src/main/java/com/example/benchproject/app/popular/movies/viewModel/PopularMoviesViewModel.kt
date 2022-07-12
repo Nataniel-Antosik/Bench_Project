@@ -28,31 +28,33 @@ class PopularMoviesViewModel @Inject constructor(
     private val _isLoaderVisible = MutableLiveData<Boolean>()
 
     init {
-        getPopularMovie()
+        loadPopularMovie()
     }
 
     fun navigateToMovieDetailsFragment(movieId: Int) {
         popularMoviesFragmentNavigator.navigateToMovieDetailsFragment(movieId)
     }
 
-    private fun getPopularMovie() = viewModelScope.launch {
-        _isLoaderVisible.value = false
-        getPopularMoviesUseCase().fold(
-            onSuccess = { moviesModel ->
-                _isLoaderVisible.value = true
-                _popularMovies.value = moviesModel.toUi()
-            },
-            onFailure = {
-                _isLoaderVisible.value = true
-                popularMoviesFragmentNavigator.errorSnackBar(
-                    R.string.errorMessageMovies,
-                    onAction = { retryGetPopularMovie() }
-                )
-            }
-        )
+    private fun loadPopularMovie() {
+        viewModelScope.launch {
+            _isLoaderVisible.value = false
+            getPopularMoviesUseCase().fold(
+                onSuccess = { moviesModel ->
+                    _isLoaderVisible.value = true
+                    _popularMovies.value = moviesModel.toUi()
+                },
+                onFailure = {
+                    _isLoaderVisible.value = true
+                    popularMoviesFragmentNavigator.errorSnackBar(
+                        R.string.errorMessageMovies,
+                        onAction = { retryGetPopularMovie() }
+                    )
+                }
+            )
+        }
     }
 
     private fun retryGetPopularMovie() {
-        getPopularMovie()
+        loadPopularMovie()
     }
 }
