@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.benchproject">
+    package="com.antosik.benchproject">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -17,7 +17,7 @@
         android:theme="@style/Theme.BenchProject"
         tools:targetApi="31">
         <activity
-            android:name="com.example.benchproject.app.main.view.MainActivity"
+            android:name="com.antosik.benchproject.app.main.view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>

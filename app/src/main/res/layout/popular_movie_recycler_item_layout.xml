@@ -5,10 +5,10 @@
     <data>
         <variable
             name="popularMoviesViewModel"
-            type="com.example.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
+            type="com.antosik.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
         <variable
             name="movie"
-            type="com.example.benchproject.app.popular.movies.entity.Movie" />
+            type="com.antosik.benchproject.app.popular.movies.entity.Movie" />
     </data>
 
     <androidx.cardview.widget.CardView
