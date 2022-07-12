@@ -50,14 +50,14 @@ class MovieDetailsViewModel @Inject constructor(
                     _isLoaderVisible.value = true
                     movieDetailsFragmentNavigator.errorSnackBar(
                         R.string.errorMessageMovies,
-                        onAction = { retryGetMovieDetails() }
+                        onAction = { retryLoadMovieDetails() }
                     )
                 }
             )
         }
     }
 
-    private fun retryGetMovieDetails() {
+    private fun retryLoadMovieDetails() {
         loadMovieDetails()
     }
 }
