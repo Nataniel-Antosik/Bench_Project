@@ -7,7 +7,4 @@ data class GenresRemote(
     val name: String
 )
 
-fun List<GenresRemote>.toDomain() =
-    map { genresRemote ->
-        GenresModel(genresRemote.id, genresRemote.name)
-    }
+fun List<GenresRemote>.toDomain() = map { GenresModel(it.id, it.name) }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.antosik.benchproject.R
 import com.antosik.benchproject.app.movie.details.entity.MovieDetails
+import com.antosik.benchproject.app.movie.details.entity.toUi
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentNavigator
 import com.antosik.benchproject.domain.movie.details.usecase.GetMovieDetailsUseCase

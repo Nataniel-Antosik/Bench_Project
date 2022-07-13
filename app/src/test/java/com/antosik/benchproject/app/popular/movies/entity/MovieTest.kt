@@ -1,10 +1,10 @@
-package com.antosik.benchproject.domain.popular.movies.entity
+package com.antosik.benchproject.app.popular.movies.entity
 
-import com.antosik.benchproject.app.popular.movies.entity.Movie
+import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-internal class MovieModelTest {
+internal class MovieTest {
 
     val moviesModel = listOf(
         MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com"),
@@ -18,7 +18,7 @@ internal class MovieModelTest {
     )
 
     @Test
-    fun `when mapToUI called on MovieModel should return Movie`() {
+    fun `when toUi called on MovieModel should return Movie`() {
         moviesModel.toUi() shouldBeEqualTo movies
     }
 }

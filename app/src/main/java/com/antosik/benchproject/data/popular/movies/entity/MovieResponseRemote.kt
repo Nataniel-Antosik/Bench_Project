@@ -6,13 +6,13 @@ import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 data class MovieResponseRemote(
     val results: List<MovieRemote>
 ) {
-    fun toDomain() = results.map { movieRemote ->
+    fun toDomain() = results.map {
         MovieModel(
-            movieRemote.id,
-            movieRemote.name,
-            movieRemote.rating,
-            movieRemote.releaseDate,
-            MoviesConstants.BASE_URL_FOR_IMAGE + movieRemote.imagePath
+            it.id,
+            it.name,
+            it.rating,
+            it.releaseDate,
+            MoviesConstants.BASE_URL_FOR_IMAGE + it.imagePath
         )
     }
 }
