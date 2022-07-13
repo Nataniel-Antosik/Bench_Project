@@ -10,8 +10,8 @@ import com.antosik.benchproject.app.popular.movies.entity.toUi
 import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
 import com.antosik.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class PopularMoviesViewModel @Inject constructor(

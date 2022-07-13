@@ -12,8 +12,8 @@ import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentNavigator
 import com.antosik.benchproject.domain.movie.details.usecase.GetMovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
