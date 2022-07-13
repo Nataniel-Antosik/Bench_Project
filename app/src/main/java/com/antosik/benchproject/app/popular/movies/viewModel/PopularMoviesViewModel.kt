@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.antosik.benchproject.R
 import com.antosik.benchproject.app.popular.movies.entity.Movie
+import com.antosik.benchproject.app.popular.movies.entity.toUi
 import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
-import com.antosik.benchproject.domain.popular.movies.entity.toUi
 import com.antosik.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
