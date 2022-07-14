@@ -2,13 +2,13 @@ package com.antosik.benchproject.app.popular.movies.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.antosik.benchproject.app.common.recyclerView.BaseAdapter
 import com.antosik.benchproject.app.common.recyclerView.BaseViewHolder
+import com.antosik.benchproject.app.common.recyclerView.RecyclerBaseAdapter
 import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel
 import com.antosik.benchproject.databinding.PopularMovieRecyclerItemLayoutBinding
 
-class PopularMoviesRecyclerAdapter(private val moviesViewModel: PopularMoviesViewModel) : BaseAdapter<Movie>() {
+class PopularMoviesRecyclerAdapter(private val moviesViewModel: PopularMoviesViewModel) : RecyclerBaseAdapter<Movie>() {
 
     inner class PopularMoviesHolder(private val binding: PopularMovieRecyclerItemLayoutBinding) : BaseViewHolder<Movie>(binding.root) {
         override fun bind(data: Movie) {
