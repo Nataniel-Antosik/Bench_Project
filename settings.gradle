@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Bench Project"
 include ':app'
 include ':data'
+include ':domain'
