@@ -2,9 +2,8 @@ package com.antosik.benchproject.data.popular.movies.repo
 
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
 import com.antosik.benchproject.domain.popular.movies.repo.PopularMoviesRepository
-import javax.inject.Inject
 
-class PopularMoviesDataRepository @Inject constructor(
+internal class PopularMoviesDataRepository(
     private val apiService: MoviesApi
 ) : PopularMoviesRepository {
 

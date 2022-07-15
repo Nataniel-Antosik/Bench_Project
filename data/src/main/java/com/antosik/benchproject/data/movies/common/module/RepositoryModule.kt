@@ -11,7 +11,7 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-interface RepositoryModule {
+internal interface RepositoryModule {
 
     @Binds
     fun bindPopularMoviesRepository(popularMoviesDataRepository: PopularMoviesDataRepository): PopularMoviesRepository
