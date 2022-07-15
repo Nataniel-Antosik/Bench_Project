@@ -1,0 +1,13 @@
+name: Build develop
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  BuildProject:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Build
+        run: ./gradlew build
