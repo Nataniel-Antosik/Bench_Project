@@ -1,5 +1,6 @@
 package com.antosik.benchproject.app.common.navigator
 
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.antosik.benchproject.R
 import com.google.android.material.snackbar.Snackbar
@@ -17,7 +18,7 @@ abstract class FragmentNavigator {
             this.fragment = null
     }
 
-    fun errorSnackBar(messageId: Int, onAction: () -> Unit) {
+    fun errorSnackBar(@StringRes messageId: Int, onAction: () -> Unit) {
         val fragment = fragment!!
         Snackbar.make(fragment.requireView(), fragment.getString(messageId), Snackbar.LENGTH_INDEFINITE)
             .setAction(fragment.getString(R.string.snackbarRetry)) { onAction() }
