@@ -2,7 +2,7 @@ name: Verification pull request
 on: pull_request
 
 jobs:
-  BuildProject:
+  Build:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
@@ -14,4 +14,48 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew assemble
+  Lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Lint
+        run: ./gradlew lint
+  Ktlint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Ktlint
+        run: ./gradlew ktlintCheck
+  Test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+      - name: Test
+        run: ./gradlew test
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: '**/TEST-*.xml'

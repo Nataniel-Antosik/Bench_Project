@@ -1,4 +1,5 @@
-# Bench Project
+# Bench Project [![Verification pull request](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/verification-pull-request.yml/badge.svg)](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/verification-pull-request.yml)
+
 
 ## General description:
 Use any free API, it would be appreciated to use a few different API (optional, the second API can be added as work progress). Operation on a local database, save, read, and modify data. Scrollable list. Splash screen. Fetch and show images. Registration and log in (optional). Unit tests.
@@ -28,3 +29,4 @@ Use any free API, it would be appreciated to use a few different API (optional, 
 * Check all TODO and do them
 * Make the project on `Github`
 * Read about `lifecycle event observer interface` generic class in the view model
+
