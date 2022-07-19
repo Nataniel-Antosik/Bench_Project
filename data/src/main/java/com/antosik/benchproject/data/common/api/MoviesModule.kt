@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object MoviesModule {
+object MoviesModule {
 
     @Singleton
     @Provides
