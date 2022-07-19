@@ -4,7 +4,7 @@ import com.antosik.benchproject.data.movies.common.constants.MoviesConstants
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.google.gson.annotations.SerializedName
 
-data class MovieDetailsRemote(
+internal data class MovieDetailsRemote(
     val id: Int,
     @SerializedName("backdrop_path")
     val imageBackgroundPath: String,

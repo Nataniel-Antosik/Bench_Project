@@ -2,7 +2,7 @@ package com.antosik.benchproject.data.popular.movies.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieRemote(
+internal data class MovieRemote(
     val id: Int,
     @SerializedName("title")
     val name: String,

@@ -6,7 +6,7 @@ import com.antosik.benchproject.data.popular.movies.entity.MovieResponseRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface MoviesApi {
+internal interface MoviesApi {
 
     @GET("popular?api_key=" + Constants.API_KEY)
     suspend fun getPopularMovies(): MovieResponseRemote
