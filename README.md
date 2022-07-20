@@ -1,4 +1,4 @@
-# Bench Project [![Verification pull request](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/verification-pull-request.yml/badge.svg)](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/verification-pull-request.yml)
+# Bench Project [![Build develop](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/build-develop.yml/badge.svg)](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/build-develop.yml) [![Verification pull request](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/verification-pull-request.yml/badge.svg)](https://github.com/Nataniel-Antosik/Bench_Project/actions/workflows/verification-pull-request.yml)
 
 
 ## General description:
