@@ -1,6 +1,6 @@
 package com.antosik.benchproject.data.common.constants
 
-class Constants {
+internal class Constants {
 
     companion object {
         const val BASE_URL = "https://api.themoviedb.org/3/movie/"
