@@ -9,32 +9,32 @@ import com.antosik.benchproject.domain.popular.movies.repo.PopularMoviesReposito
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import dagger.hilt.android.components.ViewModelComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 @Module
-@InstallIn(SingletonComponent::class)
-internal object MoviesModule {
+@InstallIn(ViewModelComponent::class)
+object MoviesModule {
 
-    @Singleton
     @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(Constants.BASE_URL)
         .build()
 
-    @Singleton
-    @Provides
-    fun provideMoviesApi(retrofit: Retrofit): MoviesApi = retrofit.create()
+    @Module
+    @InstallIn(ViewModelComponent::class)
+    internal object Providers {
 
-    @Singleton
-    @Provides
-    fun providePopularMoviesRepository(apiService: MoviesApi): PopularMoviesRepository = PopularMoviesDataRepository(apiService)
+        @Provides
+        fun provideMoviesApi(retrofit: Retrofit): MoviesApi = retrofit.create()
 
-    @Singleton
-    @Provides
-    fun provideMovieDetailsRepository(apiService: MoviesApi): MovieDetailsRepository = MovieDetailsDataRepository(apiService)
+        @Provides
+        fun providePopularMoviesRepository(apiService: MoviesApi): PopularMoviesRepository = PopularMoviesDataRepository(apiService)
+
+        @Provides
+        fun provideMovieDetailsRepository(apiService: MoviesApi): MovieDetailsRepository = MovieDetailsDataRepository(apiService)
+    }
 }
