@@ -4,6 +4,8 @@ import com.antosik.benchproject.data.common.constants.Constants
 import com.antosik.benchproject.data.movie.details.repo.MovieDetailsDataRepository
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
 import com.antosik.benchproject.data.popular.movies.repo.PopularMoviesDataRepository
+import com.antosik.benchproject.domain.movie.details.repo.MovieDetailsRepository
+import com.antosik.benchproject.domain.popular.movies.repo.PopularMoviesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,9 +32,9 @@ internal object MoviesModule {
 
     @Singleton
     @Provides
-    fun providePopularMoviesDataRepository(apiService: MoviesApi) = PopularMoviesDataRepository(apiService)
+    fun providePopularMoviesRepository(apiService: MoviesApi): PopularMoviesRepository = PopularMoviesDataRepository(apiService)
 
     @Singleton
     @Provides
-    fun provideMovieDetailsDataRepository(apiService: MoviesApi) = MovieDetailsDataRepository(apiService)
+    fun provideMovieDetailsRepository(apiService: MoviesApi): MovieDetailsRepository = MovieDetailsDataRepository(apiService)
 }
