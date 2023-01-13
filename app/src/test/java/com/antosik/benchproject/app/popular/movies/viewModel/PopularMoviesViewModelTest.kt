@@ -1,18 +1,12 @@
 package com.antosik.benchproject.app.popular.movies.viewModel
 
-import com.antosik.benchproject.R
 import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
 import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 import com.antosik.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
 import com.antosik.benchproject.test.common.LiveDataTest
-import io.mockk.Runs
 import io.mockk.coEvery
-import io.mockk.coVerify
-import io.mockk.every
-import io.mockk.just
 import io.mockk.mockk
-import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBe
@@ -34,16 +28,12 @@ internal class PopularMoviesViewModelTest {
         Movie(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
         Movie(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
     )
-    val badResponse =
-        Result.failure<List<MovieModel>>(
-            Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
-        )
     val getPopularMoviesUseCase: GetPopularMoviesUseCase = mockk()
     val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator = mockk()
 
     @Test
-    fun `when getPopularMoviesUseCase called and load data, it should be movie type`() = runTest {
-        coEvery { getPopularMoviesUseCase() } returns Result.success(moviesModel)
+    fun `when getPopularMoviesUseCase called and load data should set popularMovies`() = runTest {
+        coEvery { getPopularMoviesUseCase() } returns moviesModel
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
         tested.popularMovies.value shouldBeEqualTo movies
@@ -51,29 +41,9 @@ internal class PopularMoviesViewModelTest {
 
     @Test
     fun `when getPopularMoviesUseCase called and load data, isLoaderVisible should be true`() = runTest {
-        coEvery { getPopularMoviesUseCase() } returns Result.success(moviesModel)
+        coEvery { getPopularMoviesUseCase() } returns moviesModel
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
         tested.isLoaderVisible.value shouldBe true
-    }
-
-    @Test
-    fun `when getPopularMoviesUseCase called and load throwable, isLoaderVisible should be true`() = runTest {
-        coEvery { getPopularMoviesUseCase() } returns badResponse
-        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = any()) } just Runs
-        val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
-
-        tested.isLoaderVisible.value shouldBe true
-    }
-
-    @Test
-    fun `when getPopularMoviesUseCase called and load throwable, errorSnackBar should retry request to API`() = runTest {
-        val slot = slot<() -> Unit>()
-        coEvery { getPopularMoviesUseCase() } returns badResponse
-        every { popularMoviesFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = capture(slot)) } answers { slot.captured() } andThenAnswer {}
-
-        PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
-
-        coVerify(exactly = 2) { getPopularMoviesUseCase() }
     }
 }
