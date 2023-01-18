@@ -1,8 +1,11 @@
-package com.antosik.benchproject.data.common.api
+package com.antosik.benchproject.data.common.modules
 
+import android.app.Application
+import androidx.room.Room
 import com.antosik.benchproject.data.common.constants.Constants
 import com.antosik.benchproject.data.movie.details.repo.MovieDetailsDataRepository
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
+import com.antosik.benchproject.data.movies.common.database.MovieDatabase
 import com.antosik.benchproject.data.popular.movies.repo.PopularMoviesDataRepository
 import com.antosik.benchproject.domain.movie.details.repo.MovieDetailsRepository
 import com.antosik.benchproject.domain.popular.movies.repo.PopularMoviesRepository
@@ -36,5 +39,9 @@ object MoviesModule {
 
         @Provides
         fun provideMovieDetailsRepository(apiService: MoviesApi): MovieDetailsRepository = MovieDetailsDataRepository(apiService)
+
+        @Provides
+        fun provideMovieDatabase(app: Application): MovieDatabase =
+            Room.databaseBuilder(app, MovieDatabase::class.java, "movie_database").build()
     }
 }
