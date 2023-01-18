@@ -40,10 +40,10 @@ internal class PopularMoviesViewModelTest {
     }
 
     @Test
-    fun `when getPopularMoviesUseCase called and load data, isLoaderVisible should be true`() = runTest {
+    fun `when getPopularMoviesUseCase called and load data, isLoaderVisible should be false`() = runTest {
         coEvery { getPopularMoviesUseCase() } returns moviesModel
         val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
 
-        tested.isLoaderVisible.value shouldBe true
+        tested.isLoaderVisible.value shouldBe false
     }
 }
