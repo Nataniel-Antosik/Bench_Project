@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.antosik.benchproject.R
 import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.entity.toUi
 import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
@@ -38,23 +37,8 @@ class PopularMoviesViewModel @Inject constructor(
     private fun loadPopularMovie() {
         viewModelScope.launch {
             _isLoaderVisible.value = false
-            getPopularMoviesUseCase().fold(
-                onSuccess = { moviesModel ->
-                    _isLoaderVisible.value = true
-                    _popularMovies.value = moviesModel.toUi()
-                },
-                onFailure = {
-                    _isLoaderVisible.value = true
-                    popularMoviesFragmentNavigator.errorSnackBar(
-                        R.string.errorMessageMovies,
-                        onAction = { retryLoadPopularMovie() }
-                    )
-                }
-            )
+            _popularMovies.value = getPopularMoviesUseCase().toUi()
+            _isLoaderVisible.value = true
         }
-    }
-
-    private fun retryLoadPopularMovie() {
-        loadPopularMovie()
     }
 }

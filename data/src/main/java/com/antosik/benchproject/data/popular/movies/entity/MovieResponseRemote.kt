@@ -1,13 +1,12 @@
 package com.antosik.benchproject.data.popular.movies.entity
 
 import com.antosik.benchproject.data.movies.common.constants.MoviesConstants
-import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 
 internal data class MovieResponseRemote(
     val results: List<MovieRemote>
 ) {
-    fun toDomain() = results.map {
-        MovieModel(
+    fun toEntity() = results.map {
+        MovieEntity(
             it.id,
             it.name,
             it.rating,
