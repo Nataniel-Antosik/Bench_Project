@@ -30,8 +30,8 @@ class MovieDetailsViewModel @Inject constructor(
         get() = _isVisibleScreenElements
 
     private val _responseMovieDetails = MutableLiveData<MovieDetails>()
-    private val _isVisibleScreenElements = MutableLiveData(true)
-    private val _isLoaderVisible = MutableLiveData(false)
+    private val _isVisibleScreenElements = MutableLiveData(false)
+    private val _isLoaderVisible = MutableLiveData(true)
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
     init {
@@ -42,13 +42,13 @@ class MovieDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             getMovieDetailsUseCase(args.movieId).fold(
                 onSuccess = { movieDetailsModel ->
-                    _isVisibleScreenElements.value = false
-                    _isLoaderVisible.value = true
+                    _isVisibleScreenElements.value = true
+                    _isLoaderVisible.value = false
                     _responseMovieDetails.value = movieDetailsModel.toUi()
                 },
                 onFailure = {
-                    _isVisibleScreenElements.value = true
-                    _isLoaderVisible.value = true
+                    _isVisibleScreenElements.value = false
+                    _isLoaderVisible.value = false
                     movieDetailsFragmentNavigator.errorSnackBar(
                         R.string.errorMessageMovies,
                         onAction = { retryLoadMovieDetails() }

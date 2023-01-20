@@ -36,9 +36,9 @@ class PopularMoviesViewModel @Inject constructor(
 
     private fun loadPopularMovie() {
         viewModelScope.launch {
-            _isLoaderVisible.value = false
-            _popularMovies.value = getPopularMoviesUseCase().toUi()
             _isLoaderVisible.value = true
+            _popularMovies.value = getPopularMoviesUseCase().toUi()
+            _isLoaderVisible.value = false
         }
     }
 }

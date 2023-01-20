@@ -86,36 +86,36 @@ internal class MovieDetailsViewModelTest {
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load data, isLoaderVisible should be true`() = runTest {
+    fun `when getMovieDetailsUseCase called and load data, isLoaderVisible should be false`() = runTest {
         coEvery { getMovieDetailsUseCase(movieId) } returns Result.success(movieDetailsModel)
         val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
 
-        tested.isLoaderVisible.value shouldBe true
+        tested.isLoaderVisible.value shouldBe false
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load throwable, isLoaderVisible should be true`() = runTest {
+    fun `when getMovieDetailsUseCase called and load throwable, isLoaderVisible should be false`() = runTest {
         coEvery { getMovieDetailsUseCase(movieId) } returns badResponse andThen Result.success(movieDetailsModel)
         every { movieDetailsFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = any()) } just Runs
         val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
 
-        tested.isLoaderVisible.value shouldBe true
+        tested.isLoaderVisible.value shouldBe false
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load data, isScreenElementsVisible should be false`() = runTest {
+    fun `when getMovieDetailsUseCase called and load data, isScreenElementsVisible should be true`() = runTest {
         coEvery { getMovieDetailsUseCase(movieId) } returns Result.success(movieDetailsModel)
         val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
 
-        tested.isScreenElementsVisible.value shouldBe false
+        tested.isScreenElementsVisible.value shouldBe true
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load throwable, isScreenElementsVisible should be true`() = runTest {
+    fun `when getMovieDetailsUseCase called and load throwable, isScreenElementsVisible should be false`() = runTest {
         coEvery { getMovieDetailsUseCase(movieId) } returns badResponse
         every { movieDetailsFragmentNavigator.errorSnackBar(R.string.errorMessageMovies, onAction = any()) } just Runs
         val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
 
-        tested.isScreenElementsVisible.value shouldBe true
+        tested.isScreenElementsVisible.value shouldBe false
     }
 }
