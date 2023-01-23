@@ -46,4 +46,20 @@ internal class PopularMoviesViewModelTest {
 
         tested.isLoaderVisible.value shouldBe false
     }
+
+    @Test
+    fun `when getPopularMoviesUseCase called and load data, isEmptyDatabase should be false`() = runTest {
+        coEvery { getPopularMoviesUseCase() } returns moviesModel
+        val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
+
+        tested.isEmptyDatabase.value shouldBe false
+    }
+
+    @Test
+    fun `when getPopularMoviesUseCase called and return empty list, isEmptyDatabase should be true`() = runTest {
+        coEvery { getPopularMoviesUseCase() } returns emptyList()
+        val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
+
+        tested.isEmptyDatabase.value shouldBe true
+    }
 }

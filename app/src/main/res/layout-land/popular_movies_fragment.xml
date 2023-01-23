@@ -45,5 +45,31 @@
             tools:listitem="@layout/popular_movie_recycler_item_layout"
             tools:visibility="visible" />
 
+        <ImageView
+            android:id="@+id/databaseImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:contentDescription="@null"
+            app:isVisible="@{viewModel.isEmptyDatabase}"
+            app:layout_constraintBottom_toTopOf="@+id/databaseTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_database" />
+
+        <TextView
+            android:id="@+id/databaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptyDatabaseText"
+            android:layout_marginTop="80dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:isVisible="@{viewModel.isEmptyDatabase}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

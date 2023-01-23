@@ -22,9 +22,12 @@ class PopularMoviesViewModel @Inject constructor(
         get() = _popularMovies
     val isLoaderVisible: LiveData<Boolean>
         get() = _isLoaderVisible
+    val isEmptyDatabase: LiveData<Boolean>
+        get() = _isEmptyDatabase
 
     private val _popularMovies = MutableLiveData<List<Movie>>(emptyList())
     private val _isLoaderVisible = MutableLiveData<Boolean>()
+    private val _isEmptyDatabase = MutableLiveData(false)
 
     init {
         loadPopularMovie()
@@ -37,7 +40,12 @@ class PopularMoviesViewModel @Inject constructor(
     private fun loadPopularMovie() {
         viewModelScope.launch {
             _isLoaderVisible.value = true
-            _popularMovies.value = getPopularMoviesUseCase().toUi()
+            val movies = getPopularMoviesUseCase()
+            if (movies.isEmpty()) {
+                _isEmptyDatabase.value = true
+            } else {
+                _popularMovies.value = movies.toUi()
+            }
             _isLoaderVisible.value = false
         }
     }
