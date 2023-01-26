@@ -48,7 +48,7 @@
 
         <include
             layout="@layout/empty_database_placeholder"
-            app:isPlaceholderVisible="@{viewModel.isEmptyDatabase}" />
+            app:isPlaceholderVisible="@{viewModel.isPlaceholderVisible}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
