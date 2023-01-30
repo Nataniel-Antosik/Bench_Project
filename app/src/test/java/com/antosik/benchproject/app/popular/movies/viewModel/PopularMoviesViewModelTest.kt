@@ -62,4 +62,20 @@ internal class PopularMoviesViewModelTest {
 
         tested.isPlaceholderVisible.value shouldBe true
     }
+
+    @Test
+    fun `when getPopularMoviesUseCase called and load data, isRefreshing should be false`() = runTest {
+        coEvery { getPopularMoviesUseCase() } returns moviesModel
+        val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
+
+        tested.isRefreshing.value shouldBe false
+    }
+
+    @Test
+    fun `when getPopularMoviesUseCase called and return empty list, isRefreshing should be false`() = runTest {
+        coEvery { getPopularMoviesUseCase() } returns emptyList()
+        val tested = PopularMoviesViewModel(getPopularMoviesUseCase, popularMoviesFragmentNavigator)
+
+        tested.isRefreshing.value shouldBe false
+    }
 }

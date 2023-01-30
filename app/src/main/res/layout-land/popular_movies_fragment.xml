@@ -9,9 +9,6 @@
             name="viewModel"
             type="com.antosik.benchproject.app.popular.movies.viewModel.PopularMoviesViewModel" />
 
-        <variable
-            name="recyclerAdapterForPopularMovies"
-            type="com.antosik.benchproject.app.popular.movies.view.PopularMoviesRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,22 +26,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewPopularMoviesFragment"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/popularMoviesRefreshOnSwipe"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adapter="@{recyclerAdapterForPopularMovies}"
-            android:clipToPadding="false"
-            android:paddingBottom="88dp"
-            app:adapterData="@{viewModel.popularMovies}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="2"
-            tools:listitem="@layout/popular_movie_recycler_item_layout"
-            tools:visibility="visible" />
+            app:onRefreshListener="@{() -> viewModel.onRefreshPopularMovies()}"
+            app:refreshing="@{viewModel.isRefreshing}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularMoviesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="88dp"
+                app:adapterData="@{viewModel.popularMovies}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="2"
+                tools:listitem="@layout/popular_movie_recycler_item_layout" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <include
             layout="@layout/empty_database_placeholder"
