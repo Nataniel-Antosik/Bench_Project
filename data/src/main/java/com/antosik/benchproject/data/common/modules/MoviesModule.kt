@@ -35,7 +35,8 @@ object MoviesModule {
         fun provideMoviesApi(retrofit: Retrofit): MoviesApi = retrofit.create()
 
         @Provides
-        fun providePopularMoviesRepository(apiService: MoviesApi, database: MovieDatabase): PopularMoviesRepository = PopularMoviesDataRepository(apiService, database.dao)
+        fun providePopularMoviesRepository(apiService: MoviesApi, database: MovieDatabase): PopularMoviesRepository =
+            PopularMoviesDataRepository(apiService, database.dao)
 
         @Provides
         fun provideMovieDetailsRepository(apiService: MoviesApi): MovieDetailsRepository = MovieDetailsDataRepository(apiService)
