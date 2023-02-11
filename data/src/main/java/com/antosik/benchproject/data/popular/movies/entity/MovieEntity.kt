@@ -6,8 +6,8 @@ import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 
 @Entity
 internal data class MovieEntity(
-    @PrimaryKey(autoGenerate = false)
-    val id: Int,
+    @PrimaryKey
+    val movieId: Int,
     val name: String,
     val rating: Double,
     val releaseDate: String,
@@ -16,7 +16,7 @@ internal data class MovieEntity(
 
 internal fun List<MovieEntity>.toDomain() = map {
     MovieModel(
-        it.id,
+        it.movieId,
         it.name,
         it.rating,
         it.releaseDate,
