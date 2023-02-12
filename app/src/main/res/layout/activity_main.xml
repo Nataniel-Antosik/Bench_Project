@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_graph" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+        <com.antosik.benchproject.app.common.BenchBottomNavigationView
             android:id="@+id/activityMainBottomNavigation"
             style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:layout_width="match_parent"

@@ -26,5 +26,14 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         val bottomNavigationView = binding.activityMainBottomNavigation
         setupWithNavController(bottomNavigationView, navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.popularMoviesFragment -> bottomNavigationView.show()
+                R.id.favouriteMovies -> bottomNavigationView.show()
+                R.id.moreFragment -> bottomNavigationView.show()
+                else -> bottomNavigationView.hide()
+            }
+        }
     }
 }
