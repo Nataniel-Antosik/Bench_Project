@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/popularMoviesFragment"
         android:name="com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragment"
-        android:label="popularMoviesFragment"
+        android:label="@string/popularMoviesFragmentNavGraphLabel"
         tools:layout="@layout/popular_movies_fragment" >
         <action
             android:id="@+id/toMovieDetailsFragment"
@@ -17,15 +17,20 @@
     <fragment
         android:id="@+id/favouriteMovies"
         android:name="com.antosik.benchproject.app.favourite.movies.FavouriteMovies"
-        android:label="favouriteMovies"
+        android:label="@string/favouriteMoviesNavGraphLabel"
         tools:layout="@layout/favourite_movies" />
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.antosik.benchproject.app.movie.details.view.MovieDetailsFragment"
-        android:label="MovieDetailsFragment"
+        android:label="@string/movieDetailsFragmentNavGraphLabel"
         tools:layout="@layout/movie_details_fragment">
         <argument
             android:name="movieId"
             app:argType="integer"/>
     </fragment>
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.antosik.benchproject.app.more.view.MoreFragment"
+        android:label="@string/moreFragmentNavGraphLabel"
+        tools:layout="@layout/more_fragment" />
 </navigation>

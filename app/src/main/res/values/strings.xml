@@ -17,4 +17,8 @@
     <string name="genresLabel">Genres</string>
     <string name="emptyDatabaseText">I have no data to show</string>
     <string name="moreFragmentLabel">More</string>
+    <string name="popularMoviesFragmentNavGraphLabel">popularMoviesFragment</string>
+    <string name="favouriteMoviesNavGraphLabel">favouriteMovies</string>
+    <string name="movieDetailsFragmentNavGraphLabel">movieDetailsFragment</string>
+    <string name="moreFragmentNavGraphLabel">moreFragment</string>
 </resources>
