@@ -25,31 +25,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/movieDetailsBackgroundImageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foreground="@drawable/image_overlay_semi_transparent"
-            android:contentDescription="@null"
-            app:imageUrl="@{viewModel.responseMovieDetails.imageBackgroundUrl}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/movieDetailsCardViewForMainImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/movieDetailsBackgroundImageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movieDetailsBackgroundImageView">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/movieDetailsMainImageView"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 android:contentDescription="@null"
                 app:imageUrl="@{viewModel.responseMovieDetails.imageUrl}" />
         </androidx.cardview.widget.CardView>
@@ -64,7 +52,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/movieDetailsCardViewForMainImage"
-            app:layout_constraintTop_toBottomOf="@+id/movieDetailsBackgroundImageView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollViewForDetails"
@@ -77,8 +65,8 @@
             app:isVisible="@{viewModel.isScreenElementsVisible}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movieDetailsCardViewForMainImage">
+            app:layout_constraintStart_toEndOf="@+id/movieDetailsCardViewForMainImage"
+            app:layout_constraintTop_toBottomOf="@+id/movieDetailsMovieName">
 
             <include
                 layout="@layout/movie_details_data"
