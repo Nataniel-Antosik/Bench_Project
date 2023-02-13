@@ -1,7 +1,7 @@
 <resources>
     <string name="appName">Bench Project</string>
-    <string name="popularMoviesFragment">Popular Movies</string>
-    <string name="favouriteMovies">Favourite Movies</string>
+    <string name="popularMoviesFragmentLabel">Popular Movies</string>
+    <string name="favouriteMoviesFragmentLabel">Favourite Movies</string>
     <string name="movieName">Movie Name</string>
     <string name="movieReleaseDate">Movie Release Date</string>
     <string name="movieRating">Movie Rating</string>
@@ -18,7 +18,7 @@
     <string name="emptyDatabaseText">I have no data to show</string>
     <string name="moreFragmentLabel">More</string>
     <string name="popularMoviesFragmentNavGraphLabel">popularMoviesFragment</string>
-    <string name="favouriteMoviesNavGraphLabel">favouriteMovies</string>
+    <string name="favouriteMoviesFragmentNavGraphLabel">favouriteMoviesFragment</string>
     <string name="movieDetailsFragmentNavGraphLabel">movieDetailsFragment</string>
     <string name="moreFragmentNavGraphLabel">moreFragment</string>
 </resources>
