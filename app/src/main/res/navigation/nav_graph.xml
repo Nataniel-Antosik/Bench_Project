@@ -33,4 +33,9 @@
         android:name="com.antosik.benchproject.app.more.view.MoreFragment"
         android:label="@string/moreFragmentNavGraphLabel"
         tools:layout="@layout/more_fragment" />
+    <activity
+        android:id="@+id/ossLicensesMenuActivity"
+        android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+        android:label="@string/activityLicensesNavGraphLabel"
+        tools:layout="@style/Theme.AppCompat.Light" />
 </navigation>

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import javax.inject.Inject
 
-abstract class Navigator<T : FragmentNavigator> : Fragment() {
+abstract class NavigableFragment<T : FragmentNavigator> : Fragment() {
 
     @Inject
     lateinit var navigator: T

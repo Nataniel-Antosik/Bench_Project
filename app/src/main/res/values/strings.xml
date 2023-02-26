@@ -21,6 +21,9 @@
     <string name="favouriteMoviesFragmentNavGraphLabel">favouriteMoviesFragment</string>
     <string name="movieDetailsFragmentNavGraphLabel">movieDetailsFragment</string>
     <string name="moreFragmentNavGraphLabel">moreFragment</string>
+    <string name="activityLicensesNavGraphLabel">activityLicenses</string>
     <string name="descriptionMoreFragmentLabel">Description</string>
     <string name="descriptionMoreFragmentText">Simple app to show films from The Movie Database. Caching data is implemented therefore you can see everything that was fetched.</string>
+    <string name="licensesMoreFragmentLabel">Licenses</string>
+    <string name="showLicensesLabel">Show Licenses</string>
 </resources>
