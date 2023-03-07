@@ -2,7 +2,6 @@ package com.antosik.benchproject.app.popular.movies.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.antosik.benchproject.app.common.navigator.Navigator
@@ -19,11 +18,9 @@ class PopularMoviesFragment : Navigator<PopularMoviesFragmentNavigator>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = PopularMoviesFragmentBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = popularMoviesFragmentViewModel
-        binding.recyclerAdapterForPopularMovies = PopularMoviesRecyclerAdapter(popularMoviesFragmentViewModel)
-        return binding.root
-    }
+    ) = PopularMoviesFragmentBinding.inflate(inflater, container, false).apply {
+        lifecycleOwner = viewLifecycleOwner
+        viewModel = popularMoviesFragmentViewModel
+        popularMoviesRecyclerView.adapter = PopularMoviesRecyclerAdapter(popularMoviesFragmentViewModel)
+    }.root
 }

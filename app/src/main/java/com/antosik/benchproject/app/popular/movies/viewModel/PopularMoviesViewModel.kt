@@ -24,10 +24,13 @@ class PopularMoviesViewModel @Inject constructor(
         get() = _isLoaderVisible
     val isPlaceholderVisible: LiveData<Boolean>
         get() = _isPlaceholderVisible
+    val isRefreshing: LiveData<Boolean>
+        get() = _isRefreshing
 
     private val _popularMovies = MutableLiveData<List<Movie>>(emptyList())
     private val _isLoaderVisible = MutableLiveData<Boolean>()
-    private val _isPlaceholderVisible = MutableLiveData(false)
+    private val _isPlaceholderVisible = MutableLiveData<Boolean>()
+    private val _isRefreshing = MutableLiveData<Boolean>()
 
     init {
         loadPopularMovie()
@@ -37,8 +40,13 @@ class PopularMoviesViewModel @Inject constructor(
         popularMoviesFragmentNavigator.navigateToMovieDetailsFragment(movieId)
     }
 
+    fun onRefreshPopularMovies() {
+        loadPopularMovie()
+    }
+
     private fun loadPopularMovie() {
         viewModelScope.launch {
+            _isPlaceholderVisible.value = false
             _isLoaderVisible.value = true
             val movies = getPopularMoviesUseCase()
             if (movies.isEmpty()) {
@@ -46,6 +54,7 @@ class PopularMoviesViewModel @Inject constructor(
             } else {
                 _popularMovies.value = movies.toUi()
             }
+            _isRefreshing.value = false
             _isLoaderVisible.value = false
         }
     }
