@@ -44,6 +44,8 @@ object MoviesModule {
 
         @Provides
         fun provideMovieDatabase(app: Application): MovieDatabase =
-            Room.databaseBuilder(app, MovieDatabase::class.java, "movie_database").build()
+            Room.databaseBuilder(app, MovieDatabase::class.java, "movie_database")
+                .fallbackToDestructiveMigration()
+                .build()
     }
 }
