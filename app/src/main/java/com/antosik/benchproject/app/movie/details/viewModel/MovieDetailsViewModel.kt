@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.antosik.benchproject.app.movie.details.entity.MovieDetails
 import com.antosik.benchproject.app.movie.details.entity.toUi
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
-import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentNavigator
 import com.antosik.benchproject.domain.movie.details.usecase.GetMovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,10 +16,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     savedState: SavedStateHandle,
-    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
-    private val movieDetailsFragmentNavigator: MovieDetailsFragmentNavigator
+    private val getMovieDetailsUseCase: GetMovieDetailsUseCase
 ) : ViewModel() {
-    // TODO delete movieDetailsFragmentNavigator
     val responseMovieDetails: LiveData<MovieDetails>
         get() = _responseMovieDetails
     val isLoaderVisible: LiveData<Boolean>
