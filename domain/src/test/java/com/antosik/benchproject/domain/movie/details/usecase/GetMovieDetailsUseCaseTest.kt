@@ -14,27 +14,22 @@ import org.junit.jupiter.api.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class GetMovieDetailsUseCaseTest {
-    val movieDetailsModel = Result.success(
-        MovieDetailsModel(
-            54431,
-            "https://image.tmdb.org/t/p/w500/something1Background.com",
-            "Test1",
-            listOf(
-                GenresModel(1, "name1"),
-                GenresModel(2, "name2"),
-                GenresModel(3, "name3")
-            ),
-            "Example description",
-            2000000,
-            5.4,
-            "2022-02-10",
-            "https://image.tmdb.org/t/p/w500/something1.com"
-        )
+    val movieDetailsModel = MovieDetailsModel(
+        54431,
+        "https://image.tmdb.org/t/p/w500/something1Background.com",
+        "Test1",
+        listOf(
+            GenresModel(1, "name1"),
+            GenresModel(2, "name2"),
+            GenresModel(3, "name3")
+        ),
+        "Example description",
+        2000000,
+        5.4,
+        "2022-02-10",
+        "https://image.tmdb.org/t/p/w500/something1.com"
     )
-    val badResponseFromRepository =
-        Result.failure<MovieDetailsModel>(
-            Throwable("Unable to resolve host \"api.themoviedb.org\": No address associated with hostname")
-        )
+
     val moviesDetailsRepository: MovieDetailsRepository = mockk()
     val movieId = 54431
     val tested = GetMovieDetailsUseCase(moviesDetailsRepository)
@@ -56,23 +51,10 @@ internal class GetMovieDetailsUseCaseTest {
     }
 
     @Test
-    fun `when method get throwable from repository, 'is failure' data status should be true`() = runTest {
-        coEvery { moviesDetailsRepository.getMovieDetails(movieId) } returns badResponseFromRepository
+    fun `when method get throwable from repository, data shuld be null`() =
+        runTest {
+            coEvery { moviesDetailsRepository.getMovieDetails(movieId) } returns null
 
-        tested(movieId).isFailure shouldBe true
-    }
-
-    @Test
-    fun `when method get data from repository, 'is failure' data status shouldn't be true`() = runTest {
-        coEvery { moviesDetailsRepository.getMovieDetails(movieId) } returns movieDetailsModel
-
-        tested(movieId).isFailure shouldBe false
-    }
-
-    @Test
-    fun `when method get throwable from repository, object should hold exception`() = runTest {
-        coEvery { moviesDetailsRepository.getMovieDetails(movieId) } returns badResponseFromRepository
-
-        tested(movieId) shouldBeEqualTo badResponseFromRepository
-    }
+            tested(movieId) shouldBe null
+        }
 }

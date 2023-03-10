@@ -1,7 +1,6 @@
 package com.antosik.benchproject.data.movie.details.entity
 
 import com.antosik.benchproject.data.movies.common.constants.MoviesConstants
-import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.google.gson.annotations.SerializedName
 
 internal data class MovieDetailsRemote(
@@ -23,11 +22,10 @@ internal data class MovieDetailsRemote(
     @SerializedName("poster_path")
     val imagePath: String
 ) {
-    fun toDomain() = MovieDetailsModel(
+    fun toEntity() = MovieDetailsEntity(
         id,
         MoviesConstants.BASE_URL_FOR_IMAGE + imageBackgroundPath,
         name,
-        genres.toDomain(),
         description,
         budget,
         rating,

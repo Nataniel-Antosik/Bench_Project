@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.antosik.benchproject.R
 import com.antosik.benchproject.app.movie.details.entity.MovieDetails
 import com.antosik.benchproject.app.movie.details.entity.toUi
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
@@ -21,7 +20,7 @@ class MovieDetailsViewModel @Inject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
     private val movieDetailsFragmentNavigator: MovieDetailsFragmentNavigator
 ) : ViewModel() {
-
+    // TODO delete movieDetailsFragmentNavigator
     val responseMovieDetails: LiveData<MovieDetails>
         get() = _responseMovieDetails
     val isLoaderVisible: LiveData<Boolean>
@@ -40,25 +39,15 @@ class MovieDetailsViewModel @Inject constructor(
 
     private fun loadMovieDetails() {
         viewModelScope.launch {
-            getMovieDetailsUseCase(args.movieId).fold(
-                onSuccess = { movieDetailsModel ->
-                    _isVisibleScreenElements.value = true
-                    _isLoaderVisible.value = false
+            getMovieDetailsUseCase(args.movieId).let { movieDetailsModel ->
+                if (movieDetailsModel != null) {
                     _responseMovieDetails.value = movieDetailsModel.toUi()
-                },
-                onFailure = {
+                    _isVisibleScreenElements.value = true
+                } else {
                     _isVisibleScreenElements.value = false
-                    _isLoaderVisible.value = false
-                    movieDetailsFragmentNavigator.errorSnackBar(
-                        R.string.errorMessageMovies,
-                        onAction = { retryLoadMovieDetails() }
-                    )
                 }
-            )
+            }
+            _isLoaderVisible.value = false
         }
-    }
-
-    private fun retryLoadMovieDetails() {
-        loadMovieDetails()
     }
 }

@@ -39,7 +39,8 @@ object MoviesModule {
             PopularMoviesDataRepository(apiService, database.dao)
 
         @Provides
-        fun provideMovieDetailsRepository(apiService: MoviesApi): MovieDetailsRepository = MovieDetailsDataRepository(apiService)
+        fun provideMovieDetailsRepository(apiService: MoviesApi, database: MovieDatabase): MovieDetailsRepository =
+            MovieDetailsDataRepository(apiService, database.dao)
 
         @Provides
         fun provideMovieDatabase(app: Application): MovieDatabase =
