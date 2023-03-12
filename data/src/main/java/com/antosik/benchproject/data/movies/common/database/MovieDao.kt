@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.antosik.benchproject.data.movie.details.entity.GenresEntity
 import com.antosik.benchproject.data.movie.details.entity.MovieDetailsEntity
+import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsGenresCrossRef
 import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsWithGenres
 import com.antosik.benchproject.data.popular.movies.entity.MovieEntity
 
@@ -28,4 +29,7 @@ internal interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovieDetails(movieDetailsEntity: MovieDetailsEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMovieDetailsGenresCrossRef(movieDetailsGenresCrossRef: MovieDetailsGenresCrossRef)
 }

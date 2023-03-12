@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test
 internal class MovieDetailsWithGenresTest {
 
     val genresEntity = listOf(
-        GenresEntity(1, "Test1", 860231),
-        GenresEntity(2, "Test2", 860231),
-        GenresEntity(3, "Test3", 860231)
+        GenresEntity(1, "Test1"),
+        GenresEntity(2, "Test2"),
+        GenresEntity(3, "Test3")
     )
     val movieDetailsEntity = MovieDetailsEntity(
         54431,
