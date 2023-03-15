@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.antosik.benchproject.app.more.viewModel.MoreViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,8 +19,8 @@
             android:id="@+id/descriptionLabelMoreFragmentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/descriptionMoreFragmentLabel"
             android:layout_marginTop="16dp"
+            android:text="@string/descriptionMoreFragmentLabel"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,14 +31,46 @@
             android:id="@+id/descriptionMoreFragmentTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="12dp"
             android:text="@string/descriptionMoreFragmentText"
             android:textSize="16sp"
-            android:layout_margin="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionLabelMoreFragmentTextView" />
 
+        <View
+            android:id="@+id/firstSeparatorView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="12dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionMoreFragmentTextView" />
 
+        <TextView
+            android:id="@+id/licencesLabelMoreFragmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/licensesMoreFragmentLabel"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstSeparatorView" />
+
+        <Button
+            android:id="@+id/licensesButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> viewModel.onLicensesClick()}"
+            android:text="@string/showLicensesLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/licencesLabelMoreFragmentTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

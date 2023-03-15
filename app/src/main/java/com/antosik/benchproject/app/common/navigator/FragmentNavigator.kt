@@ -7,7 +7,7 @@ import com.google.android.material.snackbar.Snackbar
 
 abstract class FragmentNavigator {
 
-    var fragment: Fragment? = null
+    private var fragment: Fragment? = null
 
     fun attach(fragment: Fragment) {
         this.fragment = fragment
@@ -17,6 +17,8 @@ abstract class FragmentNavigator {
         if (this.fragment === fragment)
             this.fragment = null
     }
+
+    fun requireFragment() = fragment!!
 
     fun errorSnackBar(@StringRes messageId: Int, onAction: () -> Unit) {
         val fragment = fragment!!

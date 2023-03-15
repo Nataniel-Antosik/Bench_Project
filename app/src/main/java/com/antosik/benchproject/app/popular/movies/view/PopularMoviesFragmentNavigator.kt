@@ -8,7 +8,7 @@ import javax.inject.Inject
 @ActivityRetainedScoped
 class PopularMoviesFragmentNavigator @Inject constructor() : FragmentNavigator() {
 
-    fun navigateToMovieDetailsFragment(movieId: Int) = fragment!!.findNavController()
+    fun navigateToMovieDetailsFragment(movieId: Int) = requireFragment().findNavController()
         .navigate(
             PopularMoviesFragmentDirections.toMovieDetailsFragment(movieId)
         )
