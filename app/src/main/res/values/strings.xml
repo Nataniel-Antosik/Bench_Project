@@ -16,4 +16,5 @@
     <string name="releaseDateLabel">Release Date</string>
     <string name="genresLabel">Genres</string>
     <string name="emptyDatabaseText">I have no data to show</string>
+    <string name="moreFragmentLabel">More</string>
 </resources>
