@@ -4,11 +4,16 @@
         android:id="@+id/popularMoviesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_popular_movies"
-        android:title="@string/popularMoviesFragment"/>
+        android:title="@string/popularMoviesFragment" />
     <item
         android:id="@+id/favouriteMovies"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_filter_2_24"
-        android:title="@string/favouriteMovies"/>
+        android:title="@string/favouriteMovies" />
+    <item
+        android:id="@+id/moreFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_more_horiz"
+        android:title="@string/moreFragmentLabel" />
 
 </menu>
