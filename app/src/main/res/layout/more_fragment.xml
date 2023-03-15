@@ -9,13 +9,29 @@
         tools:context=".app.more.view.MoreFragment">
 
         <TextView
+            android:id="@+id/descriptionLabelMoreFragmentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/moreFragmentLabel"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/descriptionMoreFragmentLabel"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionMoreFragmentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descriptionMoreFragmentText"
+            android:textSize="16sp"
+            android:layout_margin="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionLabelMoreFragmentTextView" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
