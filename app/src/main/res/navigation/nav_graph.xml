@@ -16,8 +16,8 @@
     </fragment>
     <fragment
         android:id="@+id/favouriteMovies"
-        android:name="com.antosik.benchproject.app.favourite.movies.FavouriteMovies"
-        android:label="@string/favouriteMoviesNavGraphLabel"
+        android:name="com.antosik.benchproject.app.favourite.movies.FavouriteMoviesFragment"
+        android:label="@string/favouriteMoviesFragmentNavGraphLabel"
         tools:layout="@layout/favourite_movies" />
     <fragment
         android:id="@+id/movieDetailsFragment"
