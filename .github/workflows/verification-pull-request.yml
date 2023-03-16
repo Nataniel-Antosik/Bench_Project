@@ -3,7 +3,7 @@ on: pull_request
 
 jobs:
   Build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -16,7 +16,7 @@ jobs:
       - name: Build
         run: ./gradlew assemble
   Lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -29,7 +29,7 @@ jobs:
       - name: Lint
         run: ./gradlew lint
   Ktlint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -42,7 +42,7 @@ jobs:
       - name: Ktlint
         run: ./gradlew ktlintCheck
   Test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -54,8 +54,3 @@ jobs:
           cache: gradle
       - name: Test
         run: ./gradlew test
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: '**/TEST-*.xml'
