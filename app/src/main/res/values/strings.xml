@@ -26,4 +26,6 @@
     <string name="descriptionMoreFragmentText">Simple app to show films from The Movie Database. Caching data is implemented therefore you can see everything that was fetched.</string>
     <string name="licensesMoreFragmentLabel">Licenses</string>
     <string name="showLicensesLabel">Show Licenses</string>
+    <string name="githubLabel">GitHub</string>
+    <string name="aboutMeMoreFragmentLabel">About Me</string>
 </resources>
