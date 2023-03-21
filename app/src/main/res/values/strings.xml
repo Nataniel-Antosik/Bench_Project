@@ -28,4 +28,5 @@
     <string name="showLicensesLabel">Show Licenses</string>
     <string name="githubLabel">GitHub</string>
     <string name="aboutMeMoreFragmentLabel">About Me</string>
+    <string name="linkedinLabel">LinkedIn</string>
 </resources>

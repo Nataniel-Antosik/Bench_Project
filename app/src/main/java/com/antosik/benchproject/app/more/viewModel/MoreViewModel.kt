@@ -13,7 +13,10 @@ class MoreViewModel @Inject constructor(private val moreFragmentNavigator: MoreF
 
     fun onGithubClick() = moreFragmentNavigator.openBrowser(Uri.parse(Urls.GITHUB))
 
+    fun onLinkedinClick() = moreFragmentNavigator.openBrowser(Uri.parse(Urls.LINKEDIN))
+
     private object Urls {
         const val GITHUB = "https://github.com/Nataniel-Antosik"
+        const val LINKEDIN = "https://www.linkedin.com/in/nataniel-antosik-0a3568193/"
     }
 }
