@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.antosik.benchproject.app.more.viewModel.MoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/descriptionLabelMoreFragmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/descriptionMoreFragmentLabel"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionMoreFragmentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="@string/descriptionMoreFragmentText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionLabelMoreFragmentTextView" />
+
+        <View
+            android:id="@+id/firstSeparatorView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="12dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionMoreFragmentTextView" />
+
+        <TextView
+            android:id="@+id/licencesLabelMoreFragmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/licensesMoreFragmentLabel"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstSeparatorView" />
+
+        <Button
+            android:id="@+id/licensesButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> viewModel.onLicensesClick()}"
+            android:text="@string/showLicensesLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/licencesLabelMoreFragmentTextView" />
+
+        <View
+            android:id="@+id/secondSeparatorView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="12dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/licensesButton" />
+
+        <TextView
+            android:id="@+id/aboutMeLabelMoreFragmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/aboutMeMoreFragmentLabel"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondSeparatorView" />
+
+        <Button
+            android:id="@+id/githubButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> viewModel.onGithubClick()}"
+            android:text="@string/githubLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutMeLabelMoreFragmentTextView" />
+
+        <ImageView
+            android:id="@+id/githubLogoImageView"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/githubButton"
+            app:layout_constraintEnd_toStartOf="@+id/githubButton"
+            app:layout_constraintTop_toTopOf="@+id/githubButton"
+            app:srcCompat="@drawable/ic_github_logo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
