@@ -16,6 +16,14 @@ Use any free API, it would be appreciated to use a few different API (optional, 
 * `jUnit` + `MockK` (mocking) + `Kluent` ("to make pretty and readable assertions") - to unit tests
 * `Github Actions` - basic CI, verification if code in pull request is building correct and check unit tests
 
+## Database diagram
+
+![image](https://user-images.githubusercontent.com/57491794/224535023-e716ba88-080f-4aef-989e-ea4a9fd467f5.png)
+
+### Relations:
+* One-to-one `list movies` and `movie details`
+* Many-to-many `movie details` and `genres`
+
 ## To read:
 
 * Clean Code
