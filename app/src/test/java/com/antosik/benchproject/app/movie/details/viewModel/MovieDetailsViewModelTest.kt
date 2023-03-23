@@ -3,7 +3,6 @@ package com.antosik.benchproject.app.movie.details.viewModel
 import com.antosik.benchproject.app.movie.details.entity.Genres
 import com.antosik.benchproject.app.movie.details.entity.MovieDetails
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
-import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentNavigator
 import com.antosik.benchproject.domain.movie.details.entity.GenresModel
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.antosik.benchproject.domain.movie.details.usecase.GetMovieDetailsUseCase
@@ -53,13 +52,12 @@ internal class MovieDetailsViewModelTest {
     )
     val movieId = 54431
     val getMovieDetailsUseCase: GetMovieDetailsUseCase = mockk()
-    val movieDetailsFragmentNavigator: MovieDetailsFragmentNavigator = mockk()
     val fragmentArgs = MovieDetailsFragmentArgs(movieId)
 
     @Test
     fun `when getMovieDetailsUseCase called and load data, it should be movie details model type`() = runTest {
         coEvery { getMovieDetailsUseCase(any()) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
 
         tested.responseMovieDetails.value shouldBeEqualTo movieDetails
     }
@@ -67,7 +65,7 @@ internal class MovieDetailsViewModelTest {
     @Test
     fun `when getMovieDetailsUseCase called and load data, isLoaderVisible should be false`() = runTest {
         coEvery { getMovieDetailsUseCase(movieId) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
 
         tested.isLoaderVisible.value shouldBe false
     }
@@ -75,7 +73,7 @@ internal class MovieDetailsViewModelTest {
     @Test
     fun `when getMovieDetailsUseCase called and load data, isScreenElementsVisible should be true`() = runTest {
         coEvery { getMovieDetailsUseCase(movieId) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase, movieDetailsFragmentNavigator)
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
 
         tested.isScreenElementsVisible.value shouldBe true
     }
