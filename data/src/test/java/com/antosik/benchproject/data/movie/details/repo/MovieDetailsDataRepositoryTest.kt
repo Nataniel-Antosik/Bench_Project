@@ -51,9 +51,9 @@ internal class MovieDetailsDataRepositoryTest {
         "https://image.tmdb.org/t/p/w500/something1.com"
     )
     val genresEntity = listOf(
-        GenresEntity(1, "name1", 54431),
-        GenresEntity(2, "name1", 54431),
-        GenresEntity(3, "name1", 54431)
+        GenresEntity(1, "name1"),
+        GenresEntity(2, "name1"),
+        GenresEntity(3, "name1")
     )
     val apiService: MoviesApi = mockk()
     val dao: MovieDao = mockk(relaxed = true)
@@ -94,7 +94,7 @@ internal class MovieDetailsDataRepositoryTest {
         val movieDetailsWithGenres: MovieDetailsWithGenres = mockk { every { toDomain() } returns movieDetailsModel }
 
         coEvery { movieDetailsRemote.toEntity() } returns movieDetailsEntity
-        coEvery { movieDetailsRemote.genres.toEntity(movieId) } returns genresEntity
+        coEvery { movieDetailsRemote.genres.toEntity() } returns genresEntity
         coEvery { dao.getMovieDetailsWithGenres(movieId).first() } returns movieDetailsWithGenres
 
         tested.getMovieDetails(movieId) shouldBeEqualTo movieDetailsModel

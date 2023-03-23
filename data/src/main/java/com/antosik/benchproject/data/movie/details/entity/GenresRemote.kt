@@ -5,5 +5,5 @@ internal data class GenresRemote(
     val name: String
 )
 
-internal fun List<GenresRemote>.toEntity(movieId: Int) =
-    map { GenresEntity(it.id, it.name, movieId) }
+internal fun List<GenresRemote>.toEntity() =
+    map { GenresEntity(it.id, it.name) }
