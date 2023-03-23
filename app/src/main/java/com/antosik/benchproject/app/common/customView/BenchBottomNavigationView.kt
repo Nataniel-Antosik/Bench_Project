@@ -1,4 +1,4 @@
-package com.antosik.benchproject.app.common
+package com.antosik.benchproject.app.common.customView
 
 import android.content.Context
 import android.util.AttributeSet
@@ -20,10 +20,10 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
 
     private fun slideUp() {
         TranslateAnimation(
-            AnimationValue.fromXDelta,
-            AnimationValue.toXDelta,
+            AnimationValues.fromXDelta,
+            AnimationValues.toXDelta,
             height.toFloat(),
-            AnimationValue.toYDelta
+            AnimationValues.toYDelta
         ).let {
             it.duration = 500
             it.fillAfter = true
@@ -34,9 +34,9 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
 
     private fun slideDown() {
         TranslateAnimation(
-            AnimationValue.fromXDelta,
-            AnimationValue.toXDelta,
-            AnimationValue.fromYDelta,
+            AnimationValues.fromXDelta,
+            AnimationValues.toXDelta,
+            AnimationValues.fromYDelta,
             height.toFloat()
         ).let {
             it.duration = 500
@@ -46,7 +46,7 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
         visibility = GONE
     }
 
-    private object AnimationValue {
+    private object AnimationValues {
         const val fromXDelta = 0f
         const val toXDelta = 0f
         const val fromYDelta = 0f
