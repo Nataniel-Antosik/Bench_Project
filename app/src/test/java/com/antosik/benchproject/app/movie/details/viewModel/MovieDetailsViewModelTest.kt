@@ -77,4 +77,20 @@ internal class MovieDetailsViewModelTest {
 
         tested.isScreenElementsVisible.value shouldBe true
     }
+
+    @Test
+    fun `when getMovieDetailsUseCase called and load data, isPlaceholderVisible should be false`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns movieDetailsModel
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
+
+        tested.isPlaceholderVisible.value shouldBe false
+    }
+
+    @Test
+    fun `when getMovieDetailsUseCase called and return null, isPlaceholderVisible should be true`() = runTest {
+        coEvery { getMovieDetailsUseCase(movieId) } returns null
+        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
+
+        tested.isPlaceholderVisible.value shouldBe true
+    }
 }

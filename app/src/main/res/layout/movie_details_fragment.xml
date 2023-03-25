@@ -83,5 +83,9 @@
                 layout="@layout/movie_details_data"
                 app:viewModel="@{viewModel}" />
         </ScrollView>
+
+        <include
+            layout="@layout/empty_database_placeholder"
+            app:isPlaceholderVisible="@{viewModel.isPlaceholderVisible}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
