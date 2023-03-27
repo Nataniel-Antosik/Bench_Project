@@ -7,6 +7,14 @@
         <variable
             name="isPlaceholderVisible"
             type="Boolean" />
+
+        <variable
+            name="isPlaceholderButtonVisible"
+            type="Boolean" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,6 +46,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/refreshButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/refreshButtonLabel"
+            android:onClick="@{onClick}"
+            app:isVisible="@{isPlaceholderButtonVisible}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/databaseTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
