@@ -24,10 +24,13 @@ class MovieDetailsViewModel @Inject constructor(
         get() = _isLoaderVisible
     val isScreenElementsVisible: LiveData<Boolean>
         get() = _isVisibleScreenElements
+    val isPlaceholderVisible: LiveData<Boolean>
+        get() = _isPlaceholderVisible
 
     private val _responseMovieDetails = MutableLiveData<MovieDetails>()
     private val _isVisibleScreenElements = MutableLiveData(false)
     private val _isLoaderVisible = MutableLiveData(true)
+    private val _isPlaceholderVisible = MutableLiveData(false)
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
     init {
@@ -41,6 +44,7 @@ class MovieDetailsViewModel @Inject constructor(
                     _responseMovieDetails.value = movieDetailsModel.toUi()
                     _isVisibleScreenElements.value = true
                 } else {
+                    _isPlaceholderVisible.value = true
                     _isVisibleScreenElements.value = false
                 }
             }
