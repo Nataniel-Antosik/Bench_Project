@@ -29,4 +29,5 @@
     <string name="githubLabel">GitHub</string>
     <string name="aboutMeMoreFragmentLabel">About Me</string>
     <string name="linkedinLabel">LinkedIn</string>
+    <string name="refreshButtonLabel">Refresh</string>
 </resources>
