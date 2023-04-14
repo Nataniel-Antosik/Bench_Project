@@ -31,8 +31,7 @@
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.antosik.benchproject.app.more.view.MoreFragment"
-        android:label="@string/moreFragmentNavGraphLabel"
-        tools:layout="@layout/more_fragment" />
+        android:label="@string/moreFragmentNavGraphLabel" />
     <activity
         android:id="@+id/ossLicensesMenuActivity"
         android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
