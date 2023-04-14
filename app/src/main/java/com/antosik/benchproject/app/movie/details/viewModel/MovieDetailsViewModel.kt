@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     savedState: SavedStateHandle,
-    private val getMovieDetailsUseCase: GetMovieDetailsUseCase
+    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
 ) : ViewModel() {
     val responseMovieDetails: LiveData<MovieDetails>
         get() = _responseMovieDetails

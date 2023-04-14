@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class PopularMoviesViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
-    private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator
+    private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator,
 ) : ViewModel() {
 
     val popularMovies: LiveData<List<Movie>>

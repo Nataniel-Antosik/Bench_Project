@@ -11,7 +11,7 @@ data class MovieDetails(
     val budget: Int,
     val rating: Double,
     val releaseDate: String,
-    val imageUrl: String
+    val imageUrl: String,
 ) {
     fun budgetText() = if (budget >= 0) "$budget $" else "-"
 }

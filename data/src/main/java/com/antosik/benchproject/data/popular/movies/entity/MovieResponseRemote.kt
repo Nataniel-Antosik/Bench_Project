@@ -3,7 +3,7 @@ package com.antosik.benchproject.data.popular.movies.entity
 import com.antosik.benchproject.data.movies.common.constants.MoviesConstants
 
 internal data class MovieResponseRemote(
-    val results: List<MovieRemote>
+    val results: List<MovieRemote>,
 ) {
     fun toEntity() = results.map {
         MovieEntity(

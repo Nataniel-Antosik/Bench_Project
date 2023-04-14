@@ -14,7 +14,7 @@
 
         <variable
             name="onClick"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

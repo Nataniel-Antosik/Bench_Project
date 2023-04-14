@@ -9,7 +9,7 @@ import com.antosik.benchproject.domain.movie.details.repo.MovieDetailsRepository
 
 internal class MovieDetailsDataRepository(
     private val apiService: MoviesApi,
-    private val dao: MovieDao
+    private val dao: MovieDao,
 ) : MovieDetailsRepository {
     override suspend fun getMovieDetails(movieId: Int): MovieDetailsModel? {
         runCatching {

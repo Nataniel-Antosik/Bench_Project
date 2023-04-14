@@ -7,7 +7,7 @@ import com.antosik.benchproject.domain.movie.details.entity.GenresModel
 @Entity
 internal data class GenresEntity(
     @PrimaryKey val genresId: Int,
-    val name: String
+    val name: String,
 )
 
 internal fun List<GenresEntity>.toDomain() =

@@ -8,7 +8,7 @@ import com.antosik.benchproject.domain.popular.movies.repo.PopularMoviesReposito
 
 internal class PopularMoviesDataRepository(
     private val apiService: MoviesApi,
-    private val dao: MovieDao
+    private val dao: MovieDao,
 ) : PopularMoviesRepository {
 
     override suspend fun getPopularMoviesList(): List<MovieModel> {

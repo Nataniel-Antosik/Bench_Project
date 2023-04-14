@@ -15,7 +15,7 @@ internal data class MovieDetailsWithGenres(
         entityColumn = "genresId",
         associateBy = Junction(MovieDetailsGenresCrossRef::class)
     )
-    val genresEntity: List<GenresEntity>
+    val genresEntity: List<GenresEntity>,
 ) {
     fun toDomain() = MovieDetailsModel(
         movieDetailsEntity.movieId,

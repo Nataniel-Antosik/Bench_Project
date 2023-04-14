@@ -11,5 +11,5 @@ internal data class MovieRemote(
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("poster_path")
-    val imagePath: String
+    val imagePath: String,
 )

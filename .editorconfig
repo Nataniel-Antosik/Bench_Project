@@ -11,7 +11,7 @@ ij_kotlin_keep_blank_lines_before_right_brace = 0
 ij_kotlin_align_multiline_parameters = false
 ij_continuation_indent_size = 4
 ij_kotlin_import_nested_classes = false
-ij_kotlin_imports_layout = *,^
+ij_kotlin_imports_layout = *, ^
 ij_kotlin_allow_trailing_comma = true
 
 [**/test/**.kt]
