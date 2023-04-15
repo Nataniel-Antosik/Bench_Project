@@ -12,12 +12,14 @@ class PopularMoviesRecyclerAdapter(private val moviesViewModel: PopularMoviesVie
 
     inner class PopularMoviesHolder(private val binding: PopularMovieRecyclerItemLayoutBinding) : BaseViewHolder<Movie>(binding.root) {
         override fun bind(data: Movie) {
-            binding.popularMoviesViewModel = moviesViewModel
-            binding.movie = data
+            binding.apply {
+                popularMoviesViewModel = moviesViewModel
+                movie = data
+            }
         }
     }
 
-    override fun setViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Movie> {
-        return PopularMoviesHolder(PopularMovieRecyclerItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-    }
+    override fun setViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Movie> = PopularMoviesHolder(
+        PopularMovieRecyclerItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
 }
