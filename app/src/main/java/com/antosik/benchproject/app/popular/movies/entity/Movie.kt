@@ -7,7 +7,7 @@ data class Movie(
     val name: String,
     val rating: Double,
     val releaseDate: String,
-    val imageUrl: String
+    val imageUrl: String,
 )
 
 fun List<MovieModel>.toUi() = map { Movie(it.id, it.name, it.rating, it.releaseDate, it.imageUrl) }

@@ -17,7 +17,7 @@ class PopularMoviesFragment : NavigableFragment<PopularMoviesFragmentNavigator>(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) = PopularMoviesFragmentBinding.inflate(inflater, container, false).apply {
         lifecycleOwner = viewLifecycleOwner
         viewModel = popularMoviesFragmentViewModel

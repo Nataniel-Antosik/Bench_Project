@@ -18,7 +18,7 @@ class MovieDetailsFragment : NavigableFragment<MovieDetailsFragmentNavigator>() 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         val binding = MovieDetailsFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner

@@ -11,5 +11,5 @@ internal data class MovieAndMovieDetails(
         parentColumn = "movieId",
         entityColumn = "movieId"
     )
-    val movieDetailsEntity: MovieDetailsEntity
+    val movieDetailsEntity: MovieDetailsEntity,
 )

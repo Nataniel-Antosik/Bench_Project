@@ -2,7 +2,7 @@ package com.antosik.benchproject.data.movie.details.entity
 
 internal data class GenresRemote(
     val id: Int,
-    val name: String
+    val name: String,
 )
 
 internal fun List<GenresRemote>.toEntity() =

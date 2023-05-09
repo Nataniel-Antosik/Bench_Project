@@ -17,7 +17,7 @@ class MoreFragment : NavigableFragment<MoreFragmentNavigator>() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) = MoreFragmentBinding.inflate(inflater, container, false).apply {
         lifecycleOwner = viewLifecycleOwner
         viewModel = moreViewModel

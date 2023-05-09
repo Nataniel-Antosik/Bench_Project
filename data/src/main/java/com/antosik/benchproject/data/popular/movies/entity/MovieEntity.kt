@@ -11,7 +11,7 @@ internal data class MovieEntity(
     val name: String,
     val rating: Double,
     val releaseDate: String,
-    val imagePath: String
+    val imagePath: String,
 )
 
 internal fun List<MovieEntity>.toDomain() = map {

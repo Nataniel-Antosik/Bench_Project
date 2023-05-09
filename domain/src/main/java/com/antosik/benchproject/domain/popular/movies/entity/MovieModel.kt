@@ -5,5 +5,5 @@ data class MovieModel(
     val name: String,
     val rating: Double,
     val releaseDate: String,
-    val imageUrl: String
+    val imageUrl: String,
 )

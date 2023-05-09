@@ -12,5 +12,5 @@ internal data class MovieDetailsEntity(
     val budget: Int,
     val rating: Double,
     val releaseDate: String,
-    val imagePath: String
+    val imagePath: String,
 )
