@@ -57,8 +57,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="6dp"
-                android:singleLine="true"
                 android:ellipsize="end"
+                android:singleLine="true"
                 android:text="@{movie.name}"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -96,8 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_calendar_month_material"
                 android:contentDescription="@string/calendarMovieDescription"
+                android:src="@drawable/ic_calendar_month_material"
                 app:layout_constraintStart_toEndOf="@+id/moviePosterImageView"
                 app:layout_constraintTop_toBottomOf="@+id/movieNameTextView" />
 
@@ -107,10 +107,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/ic_star_material"
                 android:contentDescription="@string/starMovieDescription"
+                android:src="@drawable/ic_star_material"
                 app:layout_constraintStart_toEndOf="@+id/moviePosterImageView"
                 app:layout_constraintTop_toBottomOf="@+id/calendarMovieImageView" />
+
+            <ImageView
+                android:id="@+id/favouriteMovieImageView"
+                style="?android:actionButtonStyle"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieRatingTextView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>
