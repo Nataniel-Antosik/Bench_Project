@@ -15,6 +15,7 @@ Use any free API, it would be appreciated to use a few different API (optional, 
 * `Navigation Component` - to navigate, one `Activity` and a lot of `Fragments`, but you can create another `Activity`, to become familiar with navigation between `Activity`
 * `jUnit` + `MockK` (mocking) + `Kluent` ("to make pretty and readable assertions") - to unit tests
 * `Github Actions` - basic CI, verification if code in pull request is building correct and check unit tests
+* `Jetpack Compose` - to write modern declarative UI
 
 ## Database diagram
 
