@@ -6,7 +6,18 @@ import android.view.animation.TranslateAnimation
 import androidx.core.view.isVisible
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+// TODO "customView" is too generic package name
 class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomNavigationView(context, attrs) {
+
+    private val slideUpAnimation: TranslateAnimation = TranslateAnimation(
+        AnimationValues.fromXDelta,
+        AnimationValues.toXDelta,
+        height.toFloat(),
+        AnimationValues.toYDelta
+    ).apply {
+        duration = 500
+        fillAfter = true
+    }
 
     fun show() {
         if (!isVisible) {
@@ -19,12 +30,16 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
     }
 
     private fun slideUp() {
+        startAnimation(slideUpAnimation)
+        visibility = VISIBLE
+        // TODO You could save the animations as a val in the class to not repeat creating them on every show/hide
         TranslateAnimation(
             AnimationValues.fromXDelta,
             AnimationValues.toXDelta,
             height.toFloat(),
             AnimationValues.toYDelta
         ).let {
+            // TODO duration should be moved to some const as it is the same for all two animations
             it.duration = 500
             it.fillAfter = true
             startAnimation(it)

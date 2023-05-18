@@ -42,11 +42,13 @@ class MovieDetailsViewModel @Inject constructor(
     }
 
     private fun loadMovieDetails() {
+        // TODO Probably _isPlaceholderWithButtonVisible should be moved to if?
+        // TODO A lot of flags... you could think about packing it into some model to encapsulate that logic
         viewModelScope.launch {
             _isLoaderVisible.value = true
-            _isPlaceholderWithButtonVisible.value = false
             getMovieDetailsUseCase(args.movieId).let { movieDetailsModel ->
                 if (movieDetailsModel != null) {
+                    _isPlaceholderWithButtonVisible.value = false
                     _responseMovieDetails.value = movieDetailsModel.toUi()
                     _isVisibleScreenElements.value = true
                 } else {

@@ -12,10 +12,13 @@ import javax.inject.Inject
 @ActivityRetainedScoped
 class MoreFragmentNavigator @Inject constructor() : FragmentNavigator() {
 
+    // TODO Simplify name, on the VM side we don't need to know the whole activity name, or even the fact that it is activity, name should be more abstract
+    // TODO Don't use `=` for functions returning Unit
     fun navigateToOssLicensesMenuActivity() = requireFragment().let {
         startActivity(it.requireContext(), Intent(it.activity, OssLicensesMenuActivity::class.java), null)
     }
 
+    // TODO Don't use `=` for functions returning Unit
     fun openBrowser(uri: Uri) = CustomTabsIntent
         .Builder()
         .build()

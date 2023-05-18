@@ -1,8 +1,10 @@
 package com.antosik.benchproject.app.main.view
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.antosik.benchproject.R
@@ -12,27 +14,29 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    // TODO Redundant new line
+    // TODO Could be simplified
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        initBottomNavigation(binding)
+        ActivityMainBinding.inflate(layoutInflater).apply {
+            initBottomNavigation()
+            setContentView(root)
+        }
     }
 
-    private fun initBottomNavigation(binding: ActivityMainBinding) {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        val bottomNavigationView = binding.activityMainBottomNavigation
-        setupWithNavController(bottomNavigationView, navController)
-
+    // TODO Redundant new line
+    // TODO Could be simplified
+    private fun ActivityMainBinding.initBottomNavigation() {
+        val navController = (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
+        setupWithNavController(activityMainBottomNavigation, navController)
+        // TODO Should be extracted
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.popularMoviesFragment -> bottomNavigationView.show()
-                R.id.favouriteMovies -> bottomNavigationView.show()
-                R.id.moreFragment -> bottomNavigationView.show()
-                else -> bottomNavigationView.hide()
+                R.id.popularMoviesFragment -> activityMainBottomNavigation.show()
+                R.id.favouriteMovies -> activityMainBottomNavigation.show()
+                R.id.moreFragment -> activityMainBottomNavigation.show()
+                else -> activityMainBottomNavigation.hide()
             }
         }
     }

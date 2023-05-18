@@ -19,7 +19,7 @@ import retrofit2.create
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object MoviesModule {
+internal object MoviesModule {
 
     @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
@@ -27,25 +27,28 @@ object MoviesModule {
         .baseUrl(Constants.BASE_URL)
         .build()
 
-    @Module
-    @InstallIn(ViewModelComponent::class)
-    internal object Providers {
+    @Provides
+    fun provideMoviesApi(retrofit: Retrofit): MoviesApi = retrofit.create()
 
-        @Provides
-        fun provideMoviesApi(retrofit: Retrofit): MoviesApi = retrofit.create()
+    @Provides
+    fun providePopularMoviesRepository(apiService: MoviesApi, database: MovieDatabase): PopularMoviesRepository =
+        PopularMoviesDataRepository(apiService, database.dao)
 
-        @Provides
-        fun providePopularMoviesRepository(apiService: MoviesApi, database: MovieDatabase): PopularMoviesRepository =
-            PopularMoviesDataRepository(apiService, database.dao)
+    @Provides
+    fun provideMovieDetailsRepository(apiService: MoviesApi, database: MovieDatabase): MovieDetailsRepository =
+        MovieDetailsDataRepository(apiService, database.dao)
 
-        @Provides
-        fun provideMovieDetailsRepository(apiService: MoviesApi, database: MovieDatabase): MovieDetailsRepository =
-            MovieDetailsDataRepository(apiService, database.dao)
+    @Provides
+    fun provideMovieDatabase(app: Application): MovieDatabase =
+        Room.databaseBuilder(app, MovieDatabase::class.java, "movie_database")
+            .fallbackToDestructiveMigration()
+            .build()
 
-        @Provides
-        fun provideMovieDatabase(app: Application): MovieDatabase =
-            Room.databaseBuilder(app, MovieDatabase::class.java, "movie_database")
-                .fallbackToDestructiveMigration()
-                .build()
-    }
+    // // TODO What is the purpose of this?
+    // @Module
+    // @InstallIn(ViewModelComponent::class)
+    // internal object Providers {
+    //
+    //
+    // }
 }

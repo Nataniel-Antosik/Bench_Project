@@ -39,3 +39,7 @@ Use any free API, it would be appreciated to use a few different API (optional, 
 * Make the project on `Github`
 * Read about `lifecycle event observer interface` generic class in the view model
 
+## TODO
+* Rename directory `java` to `kotlin`
+* Why everything expect `MyApplication` is in `app` package?
+* Create more detailed packages, a lot of files are in the same package
