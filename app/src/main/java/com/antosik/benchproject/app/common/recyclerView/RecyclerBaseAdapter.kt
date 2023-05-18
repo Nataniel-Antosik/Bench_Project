@@ -9,6 +9,7 @@ abstract class RecyclerBaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>(
 
     private var data = emptyList<T>()
 
+    // TODO Redundant, in child class you could just override onCreateViewHolder
     abstract fun setViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T>
 
     @SuppressLint("NotifyDataSetChanged")
@@ -17,6 +18,7 @@ abstract class RecyclerBaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>(
         notifyDataSetChanged()
     }
 
+    // TODO = instead of { }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
         return setViewHolder(parent, viewType)
     }
@@ -25,6 +27,7 @@ abstract class RecyclerBaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>(
         holder.bind(data[position])
     }
 
+    // TODO Drop type + new line
     override fun getItemCount(): Int = data.size
 }
 

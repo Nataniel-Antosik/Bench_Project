@@ -1,5 +1,6 @@
 package com.antosik.benchproject.data.common.constants
 
+// TODO Should be rather named "ApiConfig" or something like that or maybe move it to Gradle?
 internal class Constants {
 
     companion object {

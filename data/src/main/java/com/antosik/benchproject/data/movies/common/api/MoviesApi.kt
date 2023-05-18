@@ -8,6 +8,7 @@ import retrofit2.http.Path
 
 internal interface MoviesApi {
 
+    // TODO DONE Use `@Query` instead of adding query parameter by yourself
     @GET("popular?api_key=" + Constants.API_KEY)
     suspend fun getPopularMovies(): MovieResponseRemote
 

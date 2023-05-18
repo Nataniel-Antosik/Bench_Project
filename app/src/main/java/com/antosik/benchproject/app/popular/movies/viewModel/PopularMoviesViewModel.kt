@@ -45,6 +45,7 @@ class PopularMoviesViewModel @Inject constructor(
     }
 
     private fun loadPopularMovie() {
+        // TODO Maybe the boolean flags could be moved to some object to simplify it from the VM side
         viewModelScope.launch {
             _isPlaceholderVisible.value = false
             _isLoaderVisible.value = true
