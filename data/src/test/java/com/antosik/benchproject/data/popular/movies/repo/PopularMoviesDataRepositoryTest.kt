@@ -52,7 +52,7 @@ internal class PopularMoviesDataRepositoryTest {
     @Test
     fun `when method get data from api, it should be mapped to the movie entity type`() =
         runTest {
-            coEvery { apiService.getPopularMovies() } returns movieResponseRemote
+            coEvery { apiService.getPopularMovies(any()) } returns movieResponseRemote
             coEvery { dao.getMovies() } returns moviesEntity
 
             dao.getMovies() shouldBeEqualTo moviesEntity
@@ -65,7 +65,7 @@ internal class PopularMoviesDataRepositoryTest {
         }
 
         coEvery { movieResponseRemote.toEntity() } returns moviesEntity
-        coEvery { apiService.getPopularMovies() } returns movieResponseRemote
+        coEvery { apiService.getPopularMovies(any()) } returns movieResponseRemote
         coEvery { dao.getMovies() } returns movies
 
         tested.getPopularMoviesList() shouldBeEqualTo moviesModel
@@ -77,7 +77,7 @@ internal class PopularMoviesDataRepositoryTest {
             every { toDomain() } returns emptyList()
         }
 
-        coEvery { apiService.getPopularMovies() } throws resultThrowable
+        coEvery { apiService.getPopularMovies(any()) } throws resultThrowable
         coEvery { dao.getMovies() } returns movies
 
         tested.getPopularMoviesList() shouldBeEqualTo emptyList()
