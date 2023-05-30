@@ -1,5 +1,6 @@
 package com.antosik.benchproject.data.movie.details.repo
 
+import com.antosik.benchproject.data.common.constants.Constants
 import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsGenresCrossRef
 import com.antosik.benchproject.data.movie.details.entity.toEntity
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
@@ -13,7 +14,7 @@ internal class MovieDetailsDataRepository(
 ) : MovieDetailsRepository {
     override suspend fun getMovieDetails(movieId: Int): MovieDetailsModel? {
         runCatching {
-            apiService.getMovieDetails(movieId).let { movieDetailsRemote ->
+            apiService.getMovieDetails(movieId, Constants.API_KEY).let { movieDetailsRemote ->
                 dao.insertMovieDetails(movieDetailsRemote.toEntity())
                 dao.insertGenres(movieDetailsRemote.genres.toEntity())
                 movieDetailsRemote.genres.forEach { genresRemote ->

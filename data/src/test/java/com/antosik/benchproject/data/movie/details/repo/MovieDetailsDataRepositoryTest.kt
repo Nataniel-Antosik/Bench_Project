@@ -75,7 +75,7 @@ internal class MovieDetailsDataRepositoryTest {
 
     @Test
     fun `when method get data from api, it should be mapped to the movie details entity`() = runTest {
-        coEvery { apiService.getMovieDetails(movieId) } returns movieDetailsRemote
+        coEvery { apiService.getMovieDetails(movieId, any()) } returns movieDetailsRemote
         coEvery { dao.getMovieDetailsWithGenres(movieId).first().movieDetailsEntity } returns movieDetailsEntity
 
         dao.getMovieDetailsWithGenres(movieId).first().movieDetailsEntity shouldBeEqualTo movieDetailsEntity
@@ -83,7 +83,7 @@ internal class MovieDetailsDataRepositoryTest {
 
     @Test
     fun `when method get data from api, it should be mapped to the genres entity`() = runTest {
-        coEvery { apiService.getMovieDetails(movieId) } returns movieDetailsRemote
+        coEvery { apiService.getMovieDetails(movieId, any()) } returns movieDetailsRemote
         coEvery { dao.getMovieDetailsWithGenres(movieId).first().genresEntity } returns genresEntity
 
         dao.getMovieDetailsWithGenres(movieId).first().genresEntity shouldBeEqualTo genresEntity
@@ -102,7 +102,7 @@ internal class MovieDetailsDataRepositoryTest {
 
     @Test
     fun `when api returns throwable, data from database first time should be null`() = runTest {
-        coEvery { apiService.getMovieDetails(movieId) } throws resultThrowable
+        coEvery { apiService.getMovieDetails(movieId, any()) } throws resultThrowable
 
         tested.getMovieDetails(movieId) shouldBeEqualTo null
     }
