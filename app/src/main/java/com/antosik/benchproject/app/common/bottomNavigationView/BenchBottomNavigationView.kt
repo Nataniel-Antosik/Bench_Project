@@ -1,4 +1,4 @@
-package com.antosik.benchproject.app.common.customView
+package com.antosik.benchproject.app.common.bottomNavigationView
 
 import android.content.Context
 import android.util.AttributeSet
