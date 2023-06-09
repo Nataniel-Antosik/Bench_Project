@@ -2,11 +2,17 @@ package com.antosik.benchproject.app.common.bottomNavigationView
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.animation.TranslateAnimation
+import android.view.animation.AnimationUtils
 import androidx.core.view.isVisible
+import com.antosik.benchproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomNavigationView(context, attrs) {
+
+    private val slideUpAnimation =
+        AnimationUtils.loadAnimation(context, R.anim.slide_up)
+    private val slideDownAnimation =
+        AnimationUtils.loadAnimation(context, R.anim.slide_down)
 
     fun show() {
         if (!isVisible) {
@@ -19,38 +25,12 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
     }
 
     private fun slideUp() {
-        TranslateAnimation(
-            AnimationValues.fromXDelta,
-            AnimationValues.toXDelta,
-            height.toFloat(),
-            AnimationValues.toYDelta
-        ).let {
-            it.duration = AnimationValues.duration
-            it.fillAfter = true
-            startAnimation(it)
-        }
+        startAnimation(slideUpAnimation)
         visibility = VISIBLE
     }
 
     private fun slideDown() {
-        TranslateAnimation(
-            AnimationValues.fromXDelta,
-            AnimationValues.toXDelta,
-            AnimationValues.fromYDelta,
-            height.toFloat()
-        ).let {
-            it.duration = AnimationValues.duration
-            it.fillAfter = true
-            startAnimation(it)
-        }
+        startAnimation(slideDownAnimation)
         visibility = GONE
-    }
-
-    private object AnimationValues {
-        const val fromXDelta = 0f
-        const val toXDelta = 0f
-        const val fromYDelta = 0f
-        const val toYDelta = 0f
-        const val duration = 500L
     }
 }
