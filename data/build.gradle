@@ -12,6 +12,8 @@ android {
         targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+        buildConfigField "String", "API_KEY", "\"c2024ee8d22359d226893c417cc438ee\""
     }
     testOptions {
         unitTests.all {
@@ -23,6 +25,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        buildConfig true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17

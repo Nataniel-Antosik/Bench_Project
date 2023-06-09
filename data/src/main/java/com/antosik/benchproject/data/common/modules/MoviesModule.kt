@@ -2,7 +2,7 @@ package com.antosik.benchproject.data.common.modules
 
 import android.app.Application
 import androidx.room.Room
-import com.antosik.benchproject.data.common.constants.Constants
+import com.antosik.benchproject.data.BuildConfig
 import com.antosik.benchproject.data.movie.details.repo.MovieDetailsDataRepository
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
 import com.antosik.benchproject.data.movies.common.database.MovieDatabase
@@ -24,7 +24,7 @@ object MoviesModule {
     @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(Constants.BASE_URL)
+        .baseUrl(BuildConfig.BASE_URL)
         .build()
 
     @Module
