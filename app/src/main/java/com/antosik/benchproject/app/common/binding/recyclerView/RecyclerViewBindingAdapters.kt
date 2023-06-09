@@ -7,5 +7,5 @@ import com.antosik.benchproject.app.common.recyclerView.RecyclerBaseAdapter
 @Suppress("UNCHECKED_CAST")
 @BindingAdapter("adapterData")
 fun RecyclerView.updateAdapterData(data: List<Any>) {
-    (adapter!! as RecyclerBaseAdapter<Any>).uploadData(data)
+    (adapter as RecyclerBaseAdapter<Any>).uploadData(data)
 }
