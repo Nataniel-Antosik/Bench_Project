@@ -25,7 +25,7 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
             height.toFloat(),
             AnimationValues.toYDelta
         ).let {
-            it.duration = 500
+            it.duration = AnimationValues.duration
             it.fillAfter = true
             startAnimation(it)
         }
@@ -39,7 +39,7 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
             AnimationValues.fromYDelta,
             height.toFloat()
         ).let {
-            it.duration = 500
+            it.duration = AnimationValues.duration
             it.fillAfter = true
             startAnimation(it)
         }
@@ -51,5 +51,6 @@ class BenchBottomNavigationView(context: Context, attrs: AttributeSet) : BottomN
         const val toXDelta = 0f
         const val fromYDelta = 0f
         const val toYDelta = 0f
+        const val duration = 500L
     }
 }
