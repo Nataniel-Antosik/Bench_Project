@@ -9,11 +9,17 @@ import javax.inject.Inject
 @HiltViewModel
 class MoreViewModel @Inject constructor(private val moreFragmentNavigator: MoreFragmentNavigator) : ViewModel() {
 
-    fun onLicensesClick() = moreFragmentNavigator.navigateToLicenses()
+    fun onLicensesClick() {
+        moreFragmentNavigator.navigateToLicenses()
+    }
 
-    fun onGithubClick() = moreFragmentNavigator.openBrowser(Uri.parse(Urls.GITHUB))
+    fun onGithubClick() {
+        moreFragmentNavigator.openBrowser(Uri.parse(Urls.GITHUB))
+    }
 
-    fun onLinkedinClick() = moreFragmentNavigator.openBrowser(Uri.parse(Urls.LINKEDIN))
+    fun onLinkedinClick() {
+        moreFragmentNavigator.openBrowser(Uri.parse(Urls.LINKEDIN))
+    }
 
     private object Urls {
         const val GITHUB = "https://github.com/Nataniel-Antosik"
