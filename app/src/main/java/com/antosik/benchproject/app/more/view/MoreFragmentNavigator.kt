@@ -12,12 +12,16 @@ import javax.inject.Inject
 @ActivityRetainedScoped
 class MoreFragmentNavigator @Inject constructor() : FragmentNavigator() {
 
-    fun navigateToOssLicensesMenuActivity() = requireFragment().let {
-        startActivity(it.requireContext(), Intent(it.activity, OssLicensesMenuActivity::class.java), null)
+    fun navigateToLicenses() {
+        requireFragment().let {
+            startActivity(it.requireContext(), Intent(it.activity, OssLicensesMenuActivity::class.java), null)
+        }
     }
 
-    fun openBrowser(uri: Uri) = CustomTabsIntent
-        .Builder()
-        .build()
-        .launchUrl(requireFragment().requireContext(), uri)
+    fun openBrowser(uri: Uri) {
+        CustomTabsIntent
+            .Builder()
+            .build()
+            .launchUrl(requireFragment().requireContext(), uri)
+    }
 }

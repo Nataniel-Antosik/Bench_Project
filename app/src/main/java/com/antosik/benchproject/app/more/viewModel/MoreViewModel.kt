@@ -9,7 +9,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MoreViewModel @Inject constructor(private val moreFragmentNavigator: MoreFragmentNavigator) : ViewModel() {
 
-    fun onLicensesClick() = moreFragmentNavigator.navigateToOssLicensesMenuActivity()
+    fun onLicensesClick() = moreFragmentNavigator.navigateToLicenses()
 
     fun onGithubClick() = moreFragmentNavigator.openBrowser(Uri.parse(Urls.GITHUB))
 
