@@ -1,6 +1,6 @@
 package com.antosik.benchproject.data.popular.movies.repo
 
-import com.antosik.benchproject.data.common.constants.Constants
+import com.antosik.benchproject.data.BuildConfig
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
 import com.antosik.benchproject.data.movies.common.database.MovieDao
 import com.antosik.benchproject.data.popular.movies.entity.toDomain
@@ -14,7 +14,7 @@ internal class PopularMoviesDataRepository(
 
     override suspend fun getPopularMoviesList(): List<MovieModel> {
         runCatching {
-            val remoteMovies = apiService.getPopularMovies(Constants.API_KEY)
+            val remoteMovies = apiService.getPopularMovies(BuildConfig.API_KEY)
             dao.insertMovies(remoteMovies.toEntity())
         }
         return dao.getMovies().toDomain()
