@@ -19,7 +19,7 @@ class PopularMoviesRecyclerAdapter(private val moviesViewModel: PopularMoviesVie
         }
     }
 
-    override fun setViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Movie> = PopularMoviesHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Movie> = PopularMoviesHolder(
         PopularMovieRecyclerItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 }
