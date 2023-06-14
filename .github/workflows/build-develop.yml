@@ -5,15 +5,6 @@ on:
       - develop
 jobs:
   BuildProject:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-      - name: Build
-        run: ./gradlew build
+    uses: ./.github/workflows/setup_java_and_execute_command.yml
+    with:
+      command: ./gradlew build
