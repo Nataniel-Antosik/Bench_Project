@@ -11,28 +11,24 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        initBottomNavigation(binding)
+        ActivityMainBinding.inflate(layoutInflater).apply {
+            initBottomNavigation()
+            setContentView(root)
+        }
     }
 
-    private fun initBottomNavigation(binding: ActivityMainBinding) {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        val bottomNavigationView = binding.activityMainBottomNavigation
-        setupWithNavController(bottomNavigationView, navController)
-
+    private fun ActivityMainBinding.initBottomNavigation() {
+        val navController = (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
+        setupWithNavController(activityMainBottomNavigation, navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.popularMoviesFragment -> bottomNavigationView.show()
-                R.id.favouriteMovies -> bottomNavigationView.show()
-                R.id.moreFragment -> bottomNavigationView.show()
-                else -> bottomNavigationView.hide()
+                R.id.popularMoviesFragment -> activityMainBottomNavigation.show()
+                R.id.favouriteMovies -> activityMainBottomNavigation.show()
+                R.id.moreFragment -> activityMainBottomNavigation.show()
+                else -> activityMainBottomNavigation.hide()
             }
         }
     }
