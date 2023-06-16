@@ -28,13 +28,14 @@ internal class UIStateTest {
     )
 
     @TestFactory
-    fun `SHOULD isLoading AND isEmpty AND isRefreshed AND data return value based on UIState`() =
+    fun `SHOULD isLoading AND isEmpty AND isRefreshed AND isSuccess AND data return value based on UIState`() =
         listOf(
             Param(
                 state = UIState.Loading,
                 isLoading = true,
                 isEmpty = false,
                 isRefreshed = false,
+                isSuccess = false,
                 data = null
             ),
             Param(
@@ -42,6 +43,7 @@ internal class UIStateTest {
                 isLoading = false,
                 isEmpty = true,
                 isRefreshed = true,
+                isSuccess = false,
                 data = null
             ),
             Param(
@@ -49,13 +51,15 @@ internal class UIStateTest {
                 isLoading = false,
                 isEmpty = false,
                 isRefreshed = true,
+                isSuccess = true,
                 data = data
             )
         ).map { param ->
             DynamicTest.dynamicTest(
                 "SHOULD isLoading be " + param.isLoading +
                     " AND isEmpty be " + param.isEmpty +
-                    " AND isRefreshed be" + param.isRefreshed +
+                    " AND isRefreshed be " + param.isRefreshed +
+                    " AND isSuccess be " + param.isSuccess +
                     " AND data return value " + param.data +
                     " WHEN UIState is" + param.state
             ) {
@@ -63,6 +67,7 @@ internal class UIStateTest {
                     uiState.isLoading() shouldBeEqualTo param.isLoading
                     uiState.isEmpty() shouldBeEqualTo param.isEmpty
                     uiState.isRefreshed() shouldBeEqualTo param.isRefreshed
+                    uiState.isSuccess() shouldBeEqualTo param.isSuccess
                     uiState.data<Any>() shouldBeEqualTo param.data
                 }
             }
@@ -83,5 +88,6 @@ data class Param(
     val isLoading: Boolean,
     val isEmpty: Boolean,
     val isRefreshed: Boolean,
+    val isSuccess: Boolean,
     val data: Any?,
 )

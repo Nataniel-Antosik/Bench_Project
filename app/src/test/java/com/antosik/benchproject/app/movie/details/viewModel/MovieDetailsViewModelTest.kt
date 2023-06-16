@@ -1,96 +1,76 @@
 package com.antosik.benchproject.app.movie.details.viewModel
 
-import com.antosik.benchproject.app.movie.details.entity.Genres
+import com.antosik.benchproject.app.common.state.UIState
 import com.antosik.benchproject.app.movie.details.entity.MovieDetails
+import com.antosik.benchproject.app.movie.details.entity.toUi
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
-import com.antosik.benchproject.domain.movie.details.entity.GenresModel
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.antosik.benchproject.domain.movie.details.usecase.GetMovieDetailsUseCase
 import com.antosik.benchproject.test.common.LiveDataTest
+import io.mockk.Awaits
 import io.mockk.coEvery
+import io.mockk.every
+import io.mockk.just
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
+import io.mockk.mockkStatic
+import io.mockk.unmockkAll
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldBeEqualTo
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @ExtendWith(LiveDataTest::class)
 internal class MovieDetailsViewModelTest {
 
-    val movieDetailsModel = MovieDetailsModel(
-        54431,
-        "https://image.tmdb.org/t/p/w500/something1Background.com",
-        "Test1",
-        listOf(
-            GenresModel(1, "name1"),
-            GenresModel(2, "name2"),
-            GenresModel(3, "name3")
-        ),
-        "Example description",
-        2000000,
-        5.4,
-        "2022-02-10",
-        "https://image.tmdb.org/t/p/w500/something1.com"
-    )
-    val movieDetails = MovieDetails(
-        54431,
-        "https://image.tmdb.org/t/p/w500/something1Background.com",
-        "Test1",
-        listOf(
-            Genres(1, "name1"),
-            Genres(2, "name2"),
-            Genres(3, "name3")
-        ),
-        "Example description",
-        2000000,
-        5.4,
-        "2022-02-10",
-        "https://image.tmdb.org/t/p/w500/something1.com"
-    )
+    val movieDetailsModel = mockk<MovieDetailsModel>(relaxed = true)
+    val movieDetails = mockk<MovieDetails>(relaxed = true)
     val movieId = 54431
     val getMovieDetailsUseCase: GetMovieDetailsUseCase = mockk()
     val fragmentArgs = MovieDetailsFragmentArgs(movieId)
+    val tested by lazy {
+        MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
+    }
+
+    @BeforeEach
+    fun beforeEach() {
+        mockkStatic(MovieDetailsModel::toUi)
+    }
+
+    @AfterEach
+    fun afterEach() {
+        unmockkAll()
+    }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load data, it should be movie details model type`() = runTest {
+    fun `SHOULD set Success state WHEN invoking getMovieDetailsUseCase returns data`() {
+        every { movieDetailsModel.toUi() } returns movieDetails
         coEvery { getMovieDetailsUseCase(any()) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
 
-        tested.responseMovieDetails.value shouldBeEqualTo movieDetails
+        tested.movieDetailsViewState.value shouldBeEqualTo UIState.Success(movieDetails)
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load data, isLoaderVisible should be false`() = runTest {
-        coEvery { getMovieDetailsUseCase(movieId) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
+    fun `SHOULD set Loading state WHEN invoking getMovieDetailsUseCase`() {
+        coEvery { getMovieDetailsUseCase(any()) } just Awaits
 
-        tested.isLoaderVisible.value shouldBe false
+        tested.movieDetailsViewState.value shouldBe UIState.Loading
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load data, isScreenElementsVisible should be true`() = runTest {
-        coEvery { getMovieDetailsUseCase(movieId) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
+    fun `SHOULD set Loading state WHEN invoking getMovieDetailsUseCase returns null`() {
+        coEvery { getMovieDetailsUseCase(any()) } returns null
 
-        tested.isScreenElementsVisible.value shouldBe true
+        tested.movieDetailsViewState.value shouldBe UIState.Empty
     }
 
     @Test
-    fun `when getMovieDetailsUseCase called and load data, isPlaceholderWithButtonVisible should be false`() = runTest {
-        coEvery { getMovieDetailsUseCase(movieId) } returns movieDetailsModel
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
+    fun `SHOULD invoke getMovieDetailsUseCase WHEN onRefreshClick called`() {
+        coEvery { getMovieDetailsUseCase(any()) } just Awaits
 
-        tested.isPlaceholderWithButtonVisible.value shouldBe false
-    }
+        tested.onRefreshClick()
 
-    @Test
-    fun `when getMovieDetailsUseCase called and return null, isPlaceholderWithButtonVisible should be true`() = runTest {
-        coEvery { getMovieDetailsUseCase(movieId) } returns null
-        val tested = MovieDetailsViewModel(fragmentArgs.toSavedStateHandle(), getMovieDetailsUseCase)
-
-        tested.isPlaceholderWithButtonVisible.value shouldBe true
+        coEvery { getMovieDetailsUseCase(any()) }
     }
 }

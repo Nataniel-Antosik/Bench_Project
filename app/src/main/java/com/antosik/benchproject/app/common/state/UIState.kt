@@ -14,6 +14,9 @@ sealed class UIState {
     fun isRefreshed() =
         this is Empty || this is Success<*>
 
+    fun isSuccess() =
+        this is Success<*>
+
     @Suppress("UNCHECKED_CAST")
     fun <T> data() =
         (this as? Success<*>)?.data as T?

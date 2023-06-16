@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.antosik.benchproject.app.common.state.UIState
 import com.antosik.benchproject.app.movie.details.entity.MovieDetails
 import com.antosik.benchproject.app.movie.details.entity.toUi
 import com.antosik.benchproject.app.movie.details.view.MovieDetailsFragmentArgs
@@ -18,19 +20,12 @@ class MovieDetailsViewModel @Inject constructor(
     savedState: SavedStateHandle,
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
 ) : ViewModel() {
-    val responseMovieDetails: LiveData<MovieDetails>
-        get() = _responseMovieDetails
-    val isLoaderVisible: LiveData<Boolean>
-        get() = _isLoaderVisible
-    val isScreenElementsVisible: LiveData<Boolean>
-        get() = _isVisibleScreenElements
-    val isPlaceholderWithButtonVisible: LiveData<Boolean>
-        get() = _isPlaceholderWithButtonVisible
-
-    private val _responseMovieDetails = MutableLiveData<MovieDetails>()
-    private val _isVisibleScreenElements = MutableLiveData(false)
-    private val _isLoaderVisible = MutableLiveData<Boolean>()
-    private val _isPlaceholderWithButtonVisible = MutableLiveData<Boolean>()
+    val movieDetailsViewState: LiveData<UIState>
+        get() = _movieDetailsViewState
+    private val _movieDetailsViewState = MutableLiveData<UIState>()
+    val responseMovieDetails = _movieDetailsViewState.map {
+        it.data<MovieDetails>()
+    }
     private val args = MovieDetailsFragmentArgs.fromSavedStateHandle(savedState)
 
     init {
@@ -43,18 +38,14 @@ class MovieDetailsViewModel @Inject constructor(
 
     private fun loadMovieDetails() {
         viewModelScope.launch {
-            _isLoaderVisible.value = true
-            _isPlaceholderWithButtonVisible.value = false
+            _movieDetailsViewState.value = UIState.Loading
             getMovieDetailsUseCase(args.movieId).let { movieDetailsModel ->
                 if (movieDetailsModel != null) {
-                    _responseMovieDetails.value = movieDetailsModel.toUi()
-                    _isVisibleScreenElements.value = true
+                    _movieDetailsViewState.value = UIState.Success(movieDetailsModel.toUi())
                 } else {
-                    _isPlaceholderWithButtonVisible.value = true
-                    _isVisibleScreenElements.value = false
+                    _movieDetailsViewState.value = UIState.Empty
                 }
             }
-            _isLoaderVisible.value = false
         }
     }
 }
