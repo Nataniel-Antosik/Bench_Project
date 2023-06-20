@@ -81,7 +81,7 @@
 
             <include
                 layout="@layout/movie_details_data"
-                app:viewModel="@{viewModel}" />
+                app:movieDetails="@{viewModel.responseMovieDetails}" />
         </ScrollView>
 
         <include

@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.antosik.benchproject.app.movie.details.viewModel.MovieDetailsViewModel" />
+            name="movieDetails"
+            type="com.antosik.benchproject.app.movie.details.entity.MovieDetails" />
     </data>
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            app:genresChips="@{viewModel.responseMovieDetails.genres}" />
+            app:genresChips="@{movieDetails.genres}" />
 
         <TextView
             android:id="@+id/movieDetailsDescriptionLabel"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:gravity="center"
-            android:text="@{viewModel.responseMovieDetails.description}"
+            android:text="@{movieDetails.description}"
             android:textSize="16sp" />
 
         <TextView
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:gravity="center"
-            android:text="@{viewModel.responseMovieDetails.budgetText()}"
+            android:text="@{movieDetails.budgetText()}"
             android:textSize="16sp" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:gravity="center"
-            android:text="@{String.valueOf(viewModel.responseMovieDetails.rating)}"
+            android:text="@{String.valueOf(movieDetails.rating)}"
             android:textSize="16sp" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:gravity="center"
-            android:text="@{viewModel.responseMovieDetails.releaseDate}"
+            android:text="@{movieDetails.releaseDate}"
             android:textSize="16sp" />
     </LinearLayout>
 </layout>
