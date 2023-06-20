@@ -3,54 +3,18 @@ on: pull_request
 
 jobs:
   Build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-      - name: Build
-        run: ./gradlew assemble
+    uses: ./.github/workflows/setup_java_and_execute_command.yml
+    with:
+      command: ./gradlew assemble
   Lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-      - name: Lint
-        run: ./gradlew lint
+    uses: ./.github/workflows/setup_java_and_execute_command.yml
+    with:
+      command: ./gradlew lint
   Ktlint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-      - name: Ktlint
-        run: ./gradlew ktlintCheck
+    uses: ./.github/workflows/setup_java_and_execute_command.yml
+    with:
+      command: ./gradlew ktlintCheck
   Test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-      - name: Test
-        run: ./gradlew test
+    uses: ./.github/workflows/setup_java_and_execute_command.yml
+    with:
+      command: ./gradlew test
