@@ -86,7 +86,6 @@
 
         <include
             layout="@layout/empty_database_placeholder"
-            app:isPlaceholderVisible="@{viewModel.isPlaceholderWithButtonVisible}"
             app:isPlaceholderButtonVisible="@{viewModel.isPlaceholderWithButtonVisible}"
             app:onClick="@{() -> viewModel.onRefreshClick()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>

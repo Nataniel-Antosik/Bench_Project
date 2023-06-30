@@ -3,7 +3,9 @@ package com.antosik.benchproject.app.popular.movies.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.antosik.benchproject.app.common.state.UIState
 import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.entity.toUi
 import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
@@ -17,23 +19,16 @@ class PopularMoviesViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
     private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator,
 ) : ViewModel() {
+    val popularMoviesViewState: LiveData<UIState>
+        get() = _popularMoviesViewState
 
-    val popularMovies: LiveData<List<Movie>>
-        get() = _popularMovies
-    val isLoaderVisible: LiveData<Boolean>
-        get() = _isLoaderVisible
-    val isPlaceholderVisible: LiveData<Boolean>
-        get() = _isPlaceholderVisible
-    val isRefreshing: LiveData<Boolean>
-        get() = _isRefreshing
-
-    private val _popularMovies = MutableLiveData<List<Movie>>(emptyList())
-    private val _isLoaderVisible = MutableLiveData<Boolean>()
-    private val _isPlaceholderVisible = MutableLiveData<Boolean>()
-    private val _isRefreshing = MutableLiveData<Boolean>()
+    private val _popularMoviesViewState = MutableLiveData<UIState>()
+    val popularMovies = _popularMoviesViewState.map {
+        it.data<List<Movie>>()
+    }
 
     init {
-        loadPopularMovie()
+        loadPopularMovies()
     }
 
     fun navigateToMovieDetailsFragment(movieId: Int) {
@@ -41,21 +36,19 @@ class PopularMoviesViewModel @Inject constructor(
     }
 
     fun onRefreshPopularMovies() {
-        loadPopularMovie()
+        loadPopularMovies()
     }
 
-    private fun loadPopularMovie() {
+    private fun loadPopularMovies() {
         viewModelScope.launch {
-            _isPlaceholderVisible.value = false
-            _isLoaderVisible.value = true
-            val movies = getPopularMoviesUseCase()
-            if (movies.isEmpty()) {
-                _isPlaceholderVisible.value = true
-            } else {
-                _popularMovies.value = movies.toUi()
+            _popularMoviesViewState.value = UIState.Loading
+            getPopularMoviesUseCase().let { movies ->
+                if (movies.isEmpty()) {
+                    _popularMoviesViewState.value = UIState.Empty
+                } else {
+                    _popularMoviesViewState.value = UIState.Success(movies.toUi())
+                }
             }
-            _isRefreshing.value = false
-            _isLoaderVisible.value = false
         }
     }
 }
