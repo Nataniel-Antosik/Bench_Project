@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            app:isVisible="@{viewModel.isLoaderVisible}"
+            app:isVisible="@{viewModel.movieDetailsViewState.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
             android:fillViewport="true"
             android:orientation="vertical"
             android:scrollbars="none"
-            app:isVisible="@{viewModel.isScreenElementsVisible}"
+            app:isVisible="@{viewModel.movieDetailsViewState.success}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/movieDetailsCardViewForMainImage"
@@ -74,7 +74,8 @@
 
         <include
             layout="@layout/empty_database_placeholder"
-            app:isPlaceholderButtonVisible="@{viewModel.isPlaceholderWithButtonVisible}"
+            app:isPlaceholderButtonVisible="@{viewModel.movieDetailsViewState.empty}"
+            app:isPlaceholderVisible="@{viewModel.movieDetailsViewState.empty}"
             app:onClick="@{() -> viewModel.onRefreshClick()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

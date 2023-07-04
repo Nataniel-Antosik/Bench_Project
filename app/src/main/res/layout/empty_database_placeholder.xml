@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="popularMoviesViewState"
-            type="com.antosik.benchproject.app.common.state.UIState" />
+            name="isPlaceholderVisible"
+            type="Boolean" />
 
         <variable
             name="isPlaceholderButtonVisible"
@@ -27,7 +27,7 @@
             android:layout_height="@dimen/emptyDataImageHeight"
             android:layout_marginBottom="50dp"
             android:contentDescription="@null"
-            app:isVisible="@{popularMoviesViewState.empty}"
+            app:isVisible="@{isPlaceholderVisible}"
             app:layout_constraintBottom_toTopOf="@+id/databaseTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             android:text="@string/emptyDatabaseText"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:isVisible="@{popularMoviesViewState.empty}"
+            app:isVisible="@{isPlaceholderVisible}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
