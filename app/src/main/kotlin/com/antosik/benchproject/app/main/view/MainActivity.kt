@@ -6,6 +6,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.antosik.benchproject.R
+import com.antosik.benchproject.app.common.bottomNavigationView.listener.BottomNavigationVisibilityListener
 import com.antosik.benchproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,13 +24,6 @@ class MainActivity : AppCompatActivity() {
     private fun ActivityMainBinding.initBottomNavigation() {
         val navController = (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
         setupWithNavController(activityMainBottomNavigation, navController)
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.popularMoviesFragment -> activityMainBottomNavigation.show()
-                R.id.favouriteMovies -> activityMainBottomNavigation.show()
-                R.id.moreFragment -> activityMainBottomNavigation.show()
-                else -> activityMainBottomNavigation.hide()
-            }
-        }
+        navController.addOnDestinationChangedListener(BottomNavigationVisibilityListener(activityMainBottomNavigation))
     }
 }
