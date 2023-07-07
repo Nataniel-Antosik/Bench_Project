@@ -1,4 +1,4 @@
-package com.antosik.benchproject.app.more.view
+package com.antosik.benchproject.app.more.view.navigator
 
 import android.content.Intent
 import android.net.Uri

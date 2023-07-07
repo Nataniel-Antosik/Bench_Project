@@ -8,6 +8,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.viewModels
 import com.antosik.benchproject.app.common.navigator.NavigableFragment
 import com.antosik.benchproject.app.common.theme.BenchProjectTheme
+import com.antosik.benchproject.app.more.view.navigator.MoreFragmentNavigator
 import com.antosik.benchproject.app.more.viewModel.MoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

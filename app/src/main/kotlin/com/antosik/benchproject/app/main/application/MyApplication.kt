@@ -1,4 +1,4 @@
-package com.antosik.benchproject
+package com.antosik.benchproject.app.main.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

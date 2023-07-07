@@ -1,7 +1,8 @@
-package com.antosik.benchproject.app.popular.movies.view
+package com.antosik.benchproject.app.popular.movies.view.navigator
 
 import androidx.navigation.fragment.findNavController
 import com.antosik.benchproject.app.common.navigator.FragmentNavigator
+import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentDirections
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 

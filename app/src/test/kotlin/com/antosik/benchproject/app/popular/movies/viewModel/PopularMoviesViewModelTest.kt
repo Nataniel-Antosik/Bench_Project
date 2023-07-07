@@ -3,7 +3,7 @@ package com.antosik.benchproject.app.popular.movies.viewModel
 import com.antosik.benchproject.app.common.state.UIState
 import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.entity.toUi
-import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
+import com.antosik.benchproject.app.popular.movies.view.navigator.PopularMoviesFragmentNavigator
 import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 import com.antosik.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
 import com.antosik.benchproject.test.common.LiveDataTest

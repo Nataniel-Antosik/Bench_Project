@@ -2,7 +2,7 @@ package com.antosik.benchproject.app.more.viewModel
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
-import com.antosik.benchproject.app.more.view.MoreFragmentNavigator
+import com.antosik.benchproject.app.more.view.navigator.MoreFragmentNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
