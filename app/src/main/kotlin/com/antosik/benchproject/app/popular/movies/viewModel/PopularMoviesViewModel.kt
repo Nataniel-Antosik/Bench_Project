@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.antosik.benchproject.app.common.state.UIState
 import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.entity.toUi
-import com.antosik.benchproject.app.popular.movies.view.PopularMoviesFragmentNavigator
+import com.antosik.benchproject.app.popular.movies.view.navigator.PopularMoviesFragmentNavigator
 import com.antosik.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.antosik.benchproject.app.popular.movies.view
+package com.antosik.benchproject.app.popular.movies.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
