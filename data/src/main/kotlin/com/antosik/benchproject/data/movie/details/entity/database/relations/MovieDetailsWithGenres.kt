@@ -1,11 +1,11 @@
-package com.antosik.benchproject.data.movie.details.entity.relations
+package com.antosik.benchproject.data.movie.details.entity.database.relations
 
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import com.antosik.benchproject.data.movie.details.entity.GenresEntity
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsEntity
-import com.antosik.benchproject.data.movie.details.entity.toDomain
+import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
+import com.antosik.benchproject.data.movie.details.entity.database.toDomain
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 
 internal data class MovieDetailsWithGenres(

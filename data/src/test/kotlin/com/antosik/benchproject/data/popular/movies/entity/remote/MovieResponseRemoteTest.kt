@@ -1,5 +1,7 @@
-package com.antosik.benchproject.data.popular.movies.entity
+package com.antosik.benchproject.data.popular.movies.entity.remote
 
+import com.antosik.benchproject.data.popular.movies.entity.database.MovieEntity
+import com.antosik.benchproject.data.popular.movies.entity.database.toDomain
 import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test

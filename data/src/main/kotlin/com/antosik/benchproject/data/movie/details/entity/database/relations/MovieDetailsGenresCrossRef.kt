@@ -1,4 +1,4 @@
-package com.antosik.benchproject.data.movie.details.entity.relations
+package com.antosik.benchproject.data.movie.details.entity.database.relations
 
 import androidx.room.Entity
 

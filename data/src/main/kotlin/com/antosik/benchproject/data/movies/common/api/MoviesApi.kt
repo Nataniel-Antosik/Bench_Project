@@ -1,7 +1,7 @@
 package com.antosik.benchproject.data.movies.common.api
 
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsRemote
-import com.antosik.benchproject.data.popular.movies.entity.MovieResponseRemote
+import com.antosik.benchproject.data.movie.details.entity.remote.MovieDetailsRemote
+import com.antosik.benchproject.data.popular.movies.entity.remote.MovieResponseRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

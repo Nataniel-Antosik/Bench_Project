@@ -1,6 +1,7 @@
-package com.antosik.benchproject.data.popular.movies.entity
+package com.antosik.benchproject.data.popular.movies.entity.remote
 
 import com.antosik.benchproject.data.movies.common.constants.MoviesConstants
+import com.antosik.benchproject.data.popular.movies.entity.database.MovieEntity
 
 internal data class MovieResponseRemote(
     val results: List<MovieRemote>,

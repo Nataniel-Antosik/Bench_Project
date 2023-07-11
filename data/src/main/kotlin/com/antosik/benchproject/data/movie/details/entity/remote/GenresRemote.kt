@@ -1,4 +1,6 @@
-package com.antosik.benchproject.data.movie.details.entity
+package com.antosik.benchproject.data.movie.details.entity.remote
+
+import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
 
 internal data class GenresRemote(
     val id: Int,

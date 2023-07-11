@@ -1,7 +1,7 @@
-package com.antosik.benchproject.data.movie.details.entity.relations
+package com.antosik.benchproject.data.movie.details.entity.database.relations
 
-import com.antosik.benchproject.data.movie.details.entity.GenresEntity
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsEntity
+import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
 import com.antosik.benchproject.domain.movie.details.entity.GenresModel
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import org.amshove.kluent.shouldBeEqualTo

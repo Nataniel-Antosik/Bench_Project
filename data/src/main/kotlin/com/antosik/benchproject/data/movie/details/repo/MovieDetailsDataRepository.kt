@@ -1,10 +1,10 @@
 package com.antosik.benchproject.data.movie.details.repo
 
 import com.antosik.benchproject.data.BuildConfig
-import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsGenresCrossRef
-import com.antosik.benchproject.data.movie.details.entity.toEntity
+import com.antosik.benchproject.data.movie.details.entity.database.relations.MovieDetailsGenresCrossRef
+import com.antosik.benchproject.data.movie.details.entity.remote.toEntity
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
-import com.antosik.benchproject.data.movies.common.database.MovieDao
+import com.antosik.benchproject.data.movies.common.database.dao.MovieDao
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.antosik.benchproject.domain.movie.details.repo.MovieDetailsRepository
 

@@ -1,5 +1,6 @@
-package com.antosik.benchproject.data.movie.details.entity
+package com.antosik.benchproject.data.movie.details.entity.remote
 
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
