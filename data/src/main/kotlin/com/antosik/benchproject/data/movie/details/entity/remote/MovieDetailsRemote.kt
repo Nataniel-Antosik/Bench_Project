@@ -1,5 +1,6 @@
-package com.antosik.benchproject.data.movie.details.entity
+package com.antosik.benchproject.data.movie.details.entity.remote
 
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
 import com.antosik.benchproject.data.movies.common.constants.MoviesConstants
 import com.google.gson.annotations.SerializedName
 

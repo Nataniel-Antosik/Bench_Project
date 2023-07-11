@@ -1,15 +1,15 @@
-package com.antosik.benchproject.data.movies.common.database
+package com.antosik.benchproject.data.movies.common.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import com.antosik.benchproject.data.movie.details.entity.GenresEntity
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsEntity
-import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsGenresCrossRef
-import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsWithGenres
-import com.antosik.benchproject.data.popular.movies.entity.MovieEntity
+import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
+import com.antosik.benchproject.data.movie.details.entity.database.relations.MovieDetailsGenresCrossRef
+import com.antosik.benchproject.data.movie.details.entity.database.relations.MovieDetailsWithGenres
+import com.antosik.benchproject.data.popular.movies.entity.database.MovieEntity
 
 @Dao
 internal interface MovieDao {

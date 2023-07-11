@@ -1,4 +1,4 @@
-package com.antosik.benchproject.data.popular.movies.entity
+package com.antosik.benchproject.data.popular.movies.entity.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

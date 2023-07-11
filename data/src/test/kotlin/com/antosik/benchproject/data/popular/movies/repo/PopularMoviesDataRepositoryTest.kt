@@ -1,10 +1,10 @@
 package com.antosik.benchproject.data.popular.movies.repo
 
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
-import com.antosik.benchproject.data.movies.common.database.MovieDao
-import com.antosik.benchproject.data.popular.movies.entity.MovieEntity
-import com.antosik.benchproject.data.popular.movies.entity.MovieResponseRemote
-import com.antosik.benchproject.data.popular.movies.entity.toDomain
+import com.antosik.benchproject.data.movies.common.database.dao.MovieDao
+import com.antosik.benchproject.data.popular.movies.entity.database.MovieEntity
+import com.antosik.benchproject.data.popular.movies.entity.database.toDomain
+import com.antosik.benchproject.data.popular.movies.entity.remote.MovieResponseRemote
 import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 import io.mockk.coEvery
 import io.mockk.every

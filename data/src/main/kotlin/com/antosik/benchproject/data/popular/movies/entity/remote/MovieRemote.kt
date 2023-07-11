@@ -1,4 +1,4 @@
-package com.antosik.benchproject.data.popular.movies.entity
+package com.antosik.benchproject.data.popular.movies.entity.remote
 
 import com.google.gson.annotations.SerializedName
 

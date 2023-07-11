@@ -1,12 +1,12 @@
 package com.antosik.benchproject.data.movie.details.repo
 
-import com.antosik.benchproject.data.movie.details.entity.GenresEntity
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsEntity
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsRemote
-import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsWithGenres
-import com.antosik.benchproject.data.movie.details.entity.toEntity
+import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
+import com.antosik.benchproject.data.movie.details.entity.database.relations.MovieDetailsWithGenres
+import com.antosik.benchproject.data.movie.details.entity.remote.MovieDetailsRemote
+import com.antosik.benchproject.data.movie.details.entity.remote.toEntity
 import com.antosik.benchproject.data.movies.common.api.MoviesApi
-import com.antosik.benchproject.data.movies.common.database.MovieDao
+import com.antosik.benchproject.data.movies.common.database.dao.MovieDao
 import com.antosik.benchproject.domain.movie.details.entity.GenresModel
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import io.mockk.coEvery

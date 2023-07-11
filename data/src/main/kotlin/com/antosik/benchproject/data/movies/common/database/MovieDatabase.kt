@@ -2,10 +2,11 @@ package com.antosik.benchproject.data.movies.common.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.antosik.benchproject.data.movie.details.entity.GenresEntity
-import com.antosik.benchproject.data.movie.details.entity.MovieDetailsEntity
-import com.antosik.benchproject.data.movie.details.entity.relations.MovieDetailsGenresCrossRef
-import com.antosik.benchproject.data.popular.movies.entity.MovieEntity
+import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
+import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
+import com.antosik.benchproject.data.movie.details.entity.database.relations.MovieDetailsGenresCrossRef
+import com.antosik.benchproject.data.movies.common.database.dao.MovieDao
+import com.antosik.benchproject.data.popular.movies.entity.database.MovieEntity
 
 @Database(
     entities = [
