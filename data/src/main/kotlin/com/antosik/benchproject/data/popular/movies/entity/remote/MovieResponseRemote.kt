@@ -12,7 +12,8 @@ internal data class MovieResponseRemote(
             it.name,
             it.rating,
             it.releaseDate,
-            MoviesConstants.BASE_URL_FOR_IMAGE + it.imagePath
+            MoviesConstants.BASE_URL_FOR_IMAGE + it.imagePath,
+            false
         )
     }
 }

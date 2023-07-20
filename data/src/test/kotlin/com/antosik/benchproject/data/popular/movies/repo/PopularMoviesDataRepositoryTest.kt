@@ -11,25 +11,19 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.unmockkAll
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 internal class PopularMoviesDataRepositoryTest {
 
     val moviesEntity = listOf(
-        MovieEntity(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com"),
-        MovieEntity(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
-        MovieEntity(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
+        MovieEntity(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com", false),
     )
     val moviesModel = listOf(
-        MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com"),
-        MovieModel(10002, "Test2", 6.4, "2022-06-22", "https://image.tmdb.org/t/p/w500/something2.com"),
-        MovieModel(10003, "Test3", 3.4, "2022-06-21", "https://image.tmdb.org/t/p/w500/something3.com")
+        MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com", false),
     )
     val movieResponseRemote: MovieResponseRemote = mockk()
     val apiService: MoviesApi = mockk()
@@ -50,7 +44,7 @@ internal class PopularMoviesDataRepositoryTest {
     }
 
     @Test
-    fun `when method get data from api, it should be mapped to the movie entity type`() =
+    fun `SHOULD map to the MovieEntity type WHEN method get data from api`() =
         runTest {
             coEvery { apiService.getPopularMovies(any()) } returns movieResponseRemote
             coEvery { dao.getMovies() } returns moviesEntity
@@ -59,7 +53,7 @@ internal class PopularMoviesDataRepositoryTest {
         }
 
     @Test
-    fun `when api returns data, data from database should be mapped to movie model`() = runTest {
+    fun `SHOULD map to the MovieModel WHEN api returns data`() = runTest {
         val movies: List<MovieEntity> = mockk {
             every { toDomain() } returns moviesModel
         }
@@ -72,7 +66,7 @@ internal class PopularMoviesDataRepositoryTest {
     }
 
     @Test
-    fun `when api returns throwable, data from database first time should be empty`() = runTest {
+    fun `SHOULD return empty list WHEND api returns throwable`() = runTest {
         val movies: List<MovieEntity> = mockk {
             every { toDomain() } returns emptyList()
         }

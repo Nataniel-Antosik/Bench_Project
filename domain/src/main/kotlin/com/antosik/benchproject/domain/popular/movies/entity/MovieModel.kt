@@ -6,4 +6,5 @@ data class MovieModel(
     val rating: Double,
     val releaseDate: String,
     val imageUrl: String,
+    val isFavorite: Boolean,
 )
