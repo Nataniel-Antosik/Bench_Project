@@ -10,6 +10,7 @@ import com.antosik.benchproject.app.popular.movies.entity.Movie
 import com.antosik.benchproject.app.popular.movies.entity.toUi
 import com.antosik.benchproject.app.popular.movies.view.navigator.PopularMoviesFragmentNavigator
 import com.antosik.benchproject.domain.popular.movies.usecase.GetPopularMoviesUseCase
+import com.antosik.benchproject.domain.popular.movies.usecase.UpdatePopularMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class PopularMoviesViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val updatePopularMovieUseCase: UpdatePopularMovieUseCase,
     private val popularMoviesFragmentNavigator: PopularMoviesFragmentNavigator,
 ) : ViewModel() {
     val popularMoviesViewState: LiveData<UIState>
@@ -37,6 +39,13 @@ class PopularMoviesViewModel @Inject constructor(
 
     fun onRefreshPopularMovies() {
         loadPopularMovies()
+    }
+
+    fun updatePopularMovie(movie: Movie) {
+        viewModelScope.launch {
+            updatePopularMovieUseCase(movie.toDomain())
+            loadPopularMovies()
+        }
     }
 
     private fun loadPopularMovies() {

@@ -22,6 +22,16 @@ internal fun List<MovieEntity>.toDomain() = map {
         it.rating,
         it.releaseDate,
         it.imagePath,
-        it.isFavorite
+        it.isFavorite,
     )
 }
+
+internal fun MovieModel.toEntity() =
+    MovieEntity(
+        id,
+        name,
+        rating,
+        releaseDate,
+        imageUrl,
+        isFavorite,
+    )

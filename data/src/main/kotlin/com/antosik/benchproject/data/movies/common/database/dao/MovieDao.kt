@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import com.antosik.benchproject.data.movie.details.entity.database.GenresEntity
 import com.antosik.benchproject.data.movie.details.entity.database.MovieDetailsEntity
 import com.antosik.benchproject.data.movie.details.entity.database.relations.MovieDetailsGenresCrossRef
@@ -32,4 +33,7 @@ internal interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovieDetailsGenresCrossRef(movieDetailsGenresCrossRef: MovieDetailsGenresCrossRef)
+
+    @Update
+    suspend fun updateMovie(movieEntity: MovieEntity)
 }
