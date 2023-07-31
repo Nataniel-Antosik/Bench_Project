@@ -6,15 +6,18 @@ import org.junit.jupiter.api.Test
 
 internal class MovieTest {
 
-    val moviesModel = listOf(
-        MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com", false)
-    )
-    val movies = listOf(
-        Movie(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com", false, 2131034145)
-    )
+    val movieModel = MovieModel(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com", false)
+    val movie = Movie(10001, "Test1", 5.4, "2022-06-23", "https://image.tmdb.org/t/p/w500/something1.com", false, 2131034145)
+    val moviesModel = listOf(movieModel)
+    val movies = listOf(movie)
 
     @Test
-    fun `SHOULD map to Movie type WHEN toUi called on MovieModel`() {
+    fun `SHOULD map to Movie WHEN toUi called on MovieModel`() {
         moviesModel.toUi() shouldBeEqualTo movies
+    }
+
+    @Test
+    fun `SHOULD map to MovieModel WHEN toDomain called on Movie`() {
+        movie.toDomain() shouldBeEqualTo movieModel
     }
 }

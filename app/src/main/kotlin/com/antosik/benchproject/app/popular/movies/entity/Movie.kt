@@ -11,7 +11,17 @@ data class Movie(
     val imageUrl: String,
     val isFavorite: Boolean,
     val colorFavorite: Int,
-)
+) {
+    fun toDomain() =
+        MovieModel(
+            id,
+            name,
+            rating,
+            releaseDate,
+            imageUrl,
+            isFavorite,
+        )
+}
 
 fun List<MovieModel>.toUi() = map {
     Movie(

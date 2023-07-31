@@ -10,17 +10,12 @@ import org.junit.jupiter.api.Test
 
 internal class GetPopularMoviesUseCaseTest {
 
-    val movieListModel = listOf(
-        MovieModel(10001, "Test1", 5.4, "2022-06-23", "https:/something1.com", false),
-        MovieModel(10002, "Test2", 6.4, "2022-06-22", "https:/something2.com", false),
-        MovieModel(10003, "Test3", 3.4, "2022-06-21", "https:/something3.com", false)
-    )
-
+    val movieListModel: List<MovieModel> = mockk()
     val popularMoviesRepository: PopularMoviesRepository = mockk()
     val tested = GetPopularMoviesUseCase(popularMoviesRepository)
 
     @Test
-    fun `SHOULD return MovieModel type WHEN method get data from repository`() = runTest {
+    fun `SHOULD return MovieModel WHEN method get data from repository`() = runTest {
         coEvery { popularMoviesRepository.getPopularMoviesList() } returns movieListModel
 
         tested() shouldBeEqualTo movieListModel
