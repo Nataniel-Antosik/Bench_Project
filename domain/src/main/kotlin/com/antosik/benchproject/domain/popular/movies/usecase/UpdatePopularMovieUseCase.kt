@@ -8,7 +8,7 @@ class UpdatePopularMovieUseCase @Inject constructor(private val repo: PopularMov
 
     suspend operator fun invoke(movieModel: MovieModel) {
         repo.updatePopularMovie(
-            movieModel.copy(isFavorite = !movieModel.isFavorite)
+            movieModel.copy(isFavourite = !movieModel.isFavourite)
         )
     }
 }

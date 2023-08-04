@@ -12,7 +12,7 @@ internal data class MovieEntity(
     val rating: Double,
     val releaseDate: String,
     val imagePath: String,
-    val isFavorite: Boolean,
+    val isFavourite: Boolean,
 )
 
 internal fun List<MovieEntity>.toDomain() = map {
@@ -22,7 +22,7 @@ internal fun List<MovieEntity>.toDomain() = map {
         it.rating,
         it.releaseDate,
         it.imagePath,
-        it.isFavorite,
+        it.isFavourite,
     )
 }
 
@@ -33,5 +33,5 @@ internal fun MovieModel.toEntity() =
         rating,
         releaseDate,
         imageUrl,
-        isFavorite,
+        isFavourite,
     )

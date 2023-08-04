@@ -12,15 +12,15 @@ internal class MovieRemoteTest {
         listOf(
             true,
             false,
-        ).map { isFavorite ->
+        ).map { isFavourite ->
             DynamicTest.dynamicTest(
-                "SHOULD map to MovieEntity with isFavorite: $isFavorite " +
-                    "WHEN toEntity was called on MovieRemote with parameter: $isFavorite"
+                "SHOULD map to MovieEntity with isFavourite: $isFavourite " +
+                    "WHEN toEntity was called on MovieRemote with parameter: $isFavourite"
             ) {
                 val movieRemote = MovieRemote(1, "movie", 1.1, "01-01-1999", "Test.pl")
-                val movieEntity = MovieEntity(1, "movie", 1.1, "01-01-1999", "https://image.tmdb.org/t/p/w500Test.pl", isFavorite)
+                val movieEntity = MovieEntity(1, "movie", 1.1, "01-01-1999", "https://image.tmdb.org/t/p/w500Test.pl", isFavourite)
 
-                movieRemote.toEntity(isFavorite) shouldBeEqualTo movieEntity
+                movieRemote.toEntity(isFavourite) shouldBeEqualTo movieEntity
             }
         }
 }

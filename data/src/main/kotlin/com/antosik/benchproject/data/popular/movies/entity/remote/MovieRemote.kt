@@ -15,13 +15,13 @@ internal data class MovieRemote(
     @SerializedName("poster_path")
     val imagePath: String,
 ) {
-    fun toEntity(isFavorite: Boolean?) =
+    fun toEntity(isFavourite: Boolean?) =
         MovieEntity(
             movieId = id,
             name = name,
             rating = rating,
             releaseDate = releaseDate,
             imagePath = MoviesConstants.BASE_URL_FOR_IMAGE + imagePath,
-            isFavorite = isFavorite ?: false
+            isFavourite = isFavourite ?: false
         )
 }

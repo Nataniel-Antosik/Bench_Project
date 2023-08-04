@@ -30,7 +30,7 @@ internal class PopularMoviesDataRepository(
         val remoteMovies = apiService.getPopularMovies(BuildConfig.API_KEY)
         return remoteMovies.results.map { remoteMovie ->
             val entityMovie = entityMovies.find { it.movieId == remoteMovie.id }
-            remoteMovie.toEntity(entityMovie?.isFavorite)
+            remoteMovie.toEntity(entityMovie?.isFavourite)
         }
     }
 }

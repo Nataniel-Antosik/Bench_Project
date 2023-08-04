@@ -120,11 +120,11 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="14dp"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_favorite"
+                android:src="@drawable/ic_favourite"
                 android:onClick="@{() -> popularMoviesViewModel.updatePopularMovie(movie)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movieRatingTextView"
-                app:tint="@{movie.colorFavorite}" />
+                app:tint="@{movie.colorFavourite}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>
