@@ -9,8 +9,8 @@ data class Movie(
     val rating: Double,
     val releaseDate: String,
     val imageUrl: String,
-    val isFavorite: Boolean,
-    val colorFavorite: Int,
+    val isFavourite: Boolean,
+    val colorFavourite: Int,
 ) {
     fun toDomain() =
         MovieModel(
@@ -19,7 +19,7 @@ data class Movie(
             rating,
             releaseDate,
             imageUrl,
-            isFavorite,
+            isFavourite,
         )
 }
 
@@ -30,11 +30,11 @@ fun List<MovieModel>.toUi() = map {
         it.rating,
         it.releaseDate,
         it.imageUrl,
-        it.isFavorite,
-        it.isFavorite.changeColorIfFavorite(),
+        it.isFavourite,
+        it.isFavourite.changeColorIfFavourite(),
     )
 }
 
-private fun Boolean.changeColorIfFavorite() =
+private fun Boolean.changeColorIfFavourite() =
     if (this) R.color.red else R.color.black
 
