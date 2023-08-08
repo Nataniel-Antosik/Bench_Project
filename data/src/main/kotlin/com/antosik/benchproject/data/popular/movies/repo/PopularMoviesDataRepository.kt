@@ -8,8 +8,9 @@ import com.antosik.benchproject.data.popular.movies.entity.database.toDomain
 import com.antosik.benchproject.data.popular.movies.entity.database.toEntity
 import com.antosik.benchproject.domain.popular.movies.entity.MovieModel
 import com.antosik.benchproject.domain.popular.movies.repo.PopularMoviesRepository
+import javax.inject.Inject
 
-internal class PopularMoviesDataRepository(
+internal class PopularMoviesDataRepository @Inject constructor(
     private val apiService: MoviesApi,
     private val dao: MovieDao,
 ) : PopularMoviesRepository {
