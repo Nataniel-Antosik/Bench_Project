@@ -7,8 +7,9 @@ import com.antosik.benchproject.data.movies.common.api.MoviesApi
 import com.antosik.benchproject.data.movies.common.database.dao.MovieDao
 import com.antosik.benchproject.domain.movie.details.entity.MovieDetailsModel
 import com.antosik.benchproject.domain.movie.details.repo.MovieDetailsRepository
+import javax.inject.Inject
 
-internal class MovieDetailsDataRepository(
+internal class MovieDetailsDataRepository @Inject constructor(
     private val apiService: MoviesApi,
     private val dao: MovieDao,
 ) : MovieDetailsRepository {
