@@ -30,4 +30,5 @@
     <string name="aboutMeMoreFragmentLabel">About Me</string>
     <string name="linkedinLabel">LinkedIn</string>
     <string name="refreshButtonLabel">Refresh</string>
+    <string name="emptyDatabaseFavouriteMoviesText">I have no data to show\nAdd movies to favourite</string>
 </resources>
